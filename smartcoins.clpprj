@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project name="C:\laragon\www\smartcoinsportal\smartcoins.clpprj">
+ <settings>
+  <PM_URL><![CDATA[http://localhost/]]></PM_URL>
+  <PM_HOME_URL><![CDATA[http://localhost/]]></PM_HOME_URL>
+  <PM_LIBS><![CDATA[]]></PM_LIBS>
+  <PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION>
+  <PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR>
+  <PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE>
+  <PM_LANGUAGE><![CDATA[]]></PM_LANGUAGE>
+ </settings>
+ <removed value=";"/>
+ <added value=""/>
+ <lastopfiles>
+  <file name="C:\laragon\www\smartcoinsportal\config\database.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\routes\web.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\HomeController.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Jobs\SyncSettingsJob.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Livewire\ControlPanel.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\control-panel.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\index.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\settings.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\layouts\app.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\widget.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\table.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\chart.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\element.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\form.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\404.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\auth\login.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\sales-table.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\welcome.blade.php"/>
+  <lastactivefile name="C:\laragon\www\smartcoinsportal\resources\views\welcome.blade.php"/>
+ </lastopfiles>
+ <todoblock/>
+ <dbgurls/>
+ <lasttime value="1741792559"/>
+</project>
