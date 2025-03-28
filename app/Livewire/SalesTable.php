@@ -32,5 +32,6 @@ class SalesTable extends Component
     public function render()
     {
         return view('livewire.sales-table');
+        
     }
 }
