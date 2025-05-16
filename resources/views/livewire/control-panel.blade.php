@@ -68,7 +68,7 @@
 				  	<label for="formFile" class="form-label">1 jeton = €</label>
 				  </div>
 				  <div class="col-md-4">
-				  	<input class="form-control use-keyboard-input @error('parity') is-invalid @enderror" type="text" id="Parity" wire:model.live="parity" >
+				  	<input class="form-control use-keyboard-input @error('parity') is-invalid @enderror" type="text" id="Parity" wire:model.live.debounce.500ms="parity" >
 				  </div>
 				  
 			</div>
@@ -78,7 +78,7 @@
 			
 			<div class="mb-3">
 				  <label for="formFile" class="form-label">Boutton jetons </label>
-				  <input class="form-control use-keyboard-input @error('tokenArray') is-invalid @enderror" type="text" id="tokenArray" wire:model.live="tokenArray">
+				  <input class="form-control use-keyboard-input @error('tokenArray') is-invalid @enderror" type="text" id="tokenArray" wire:model.live.debounce.500ms="tokenArray">
 			</div>
 			
 			
@@ -86,7 +86,7 @@
 			
 			<div class="mb-3">
 				  <label for="formFile" class="form-label">Ngrok </label>
-				  <input class="form-control use-keyboard-input @error('ngrok') is-invalid @enderror" type="text" id="ngrok" wire:model.live="ngrok">
+				  <input class="form-control use-keyboard-input @error('ngrok') is-invalid @enderror" type="text" id="ngrok" wire:model.live.debounce.500ms="ngrok">
 			</div>
 				
 			<hr>
@@ -94,7 +94,7 @@
 			
 			<div class="mb-3">
 				  <label for="formFile" class="form-label">Magasin </label>
-				  <input class="form-control use-keyboard-input @error('magasin') is-invalid @enderror" type="text" id="Magasin"  wire:model.live="magasin"> Jetons
+				  <input class="form-control use-keyboard-input @error('magasin') is-invalid @enderror" type="text" id="Magasin"  wire:model.live.debounce.500ms="magasin"> Jetons
 			</div>
 			<div class="mb-3" >
 					<label for="formFile" class="form-label">Power off Distributor </label>
