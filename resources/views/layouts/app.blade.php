@@ -141,16 +141,17 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="{{url('/home')}}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <div class="nav-item dropdown">
+                  {{-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Distributors</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{route('settings')}}" class="dropdown-item">Settings</a>
-                           {{-- <a href="typography.html" class="dropdown-item">Typography</a>
-                            <a href="element.html" class="dropdown-item">Other Elements</a>--}}
+                            
+                            <a href="{{route('linked-devices.create')}}" class="dropdown-item">Add device</a>
+                             <a href="element.html" class="dropdown-item">Other Elements</a>
+                            
                         </div>
-                    </div>
-                    <a href="{{url('widget')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
-                    <a href="{{url('form')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
+                    </div> --}}
+                    <a href="{{route('linked-devices.index')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Devices</a>
+                    {{--<a href="{{url('form')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="{{url('table')}}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="{{url('chart')}}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                     <div class="nav-item dropdown">
@@ -161,7 +162,7 @@
                             <a href="{{url('404')}}" class="dropdown-item">404 Error</a>
                             <a href="blank.html" class="dropdown-item">Blank Page</a>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
             </nav>
         </div>

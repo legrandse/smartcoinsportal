@@ -49,13 +49,14 @@ class ControlPanel extends Component
 
 	public function mount() {
 		
-		$this->apiKey = config('services.payconiq.key');
+		$this->apiKey = config('services.noteader.key');
 
 		
-		$this->payconiqToggle = Settings::find(1)->value;
-		$this->stripeToggle = Settings::find(2)->value;
-		$this->paypalToggle = Settings::find(3)->value;
-		$this->cashToggle = Settings::find(4)->value;
+		
+		$this->payconiqToggle = (bool) Settings::where('name', 'payconiq')->value('value');
+		$this->stripeToggle = (bool) Settings::where('name', 'stripe')->value('value');
+		$this->paypalToggle = (bool) Settings::where('name', 'paypal')->value('value');
+		$this->cashToggle = (bool) Settings::where('name', 'cash')->value('value');
 		
 		$this->magasin = Settings::find(8)->value;
         
@@ -81,7 +82,7 @@ class ControlPanel extends Component
             ]);
         }
 	
-	
+	/*
 	public function savePayconiqValue() {
 		//$this->validateData();
 		$this->payconiqToggle = !$this->payconiqToggle;
@@ -112,24 +113,57 @@ class ControlPanel extends Component
 		$settings = Settings::find(4);
         $settings->value = $this->cashToggle ? $this->cashToggle : 0;
         $settings->save();
+	}*/
+
+	public function toggleSetting($property)
+	{
+		    // Map des propriétés Livewire => noms dans la DB
+			$propertyToSettingName = [
+				'payconiqToggle' => 'payconiq',
+				'stripeToggle' => 'stripe',
+				'paypalToggle' => 'paypal',
+				'cashToggle' => 'cash',
+			];
+	
+		if (!array_key_exists($property, $propertyToSettingName) || !property_exists($this, $property)) {
+			return;
+		}
+	
+		$newValue = !$this->$property;
+		$this->$property = $newValue;
+	
+		$settingName = $propertyToSettingName[$property];
+		$settings = Settings::where('name', $settingName)->first();
+	
+		if ($settings) {
+			$settings->value = $newValue;
+			$settings->save();
+		}
+	
+		// Appelle ta logique Livewire existante
+		$this->updated($settingName, $newValue);
 	}
 	
 	#[On('updateInput')] 
 	public function updated($name,$value) {
 		//dd($name,$value);
-		$settings = Settings::where('name',$name);
-        $settings->update([
+		$settings = Settings::where('name', $name)->first();
+		$settings->update([
+	        
+	        	'value' => $value
+	        
+	        ]);
         
-        	'value' => $value
         
-        ]);
-        
-        
-        $job = SyncSettingsJob::dispatch();
-        $response =  Http::post('smartcoins.test/api/notify-settings-update', [
-		    'value' => 'settings'  // Ajout en tant que paramètre GET
+        //$job = SyncSettingsJob::dispatch();
+        $response =  Http::post('https://smartcoins.ngrok.app/api/notify-settings-update', [
+		    'value' => 'settings',
+		    'data' => [
+                'name' => $settings->name,
+                'value' => $settings->value,
+            ]  // Ajout en tant que paramètre GET
 		]);
-        //dd($response->status(), $response->body());
+       // dd($response->status(), $response->body());
               
         
         
@@ -180,6 +214,40 @@ class ControlPanel extends Component
 
 	}
 
+	public function collectNotereader()
+	{
+		//dd('hello');
+		$baseUrl = $this->noteReaderUrl . '/collect';
+		try {
+			$response = Http::withToken($this->apiKey)->post($baseUrl);
+		} catch (\Exception $e) {
+			\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
+			return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
+	    	}
+			session()->flash('success', 'successfully updated.');
+
+
+			//$this->redirect('/settings'); 
+
+	}
+
+
+	public function stackNote()
+	{
+		//dd('hello');
+		$baseUrl = $this->noteReaderUrl . '/stack';
+		try {
+			$response = Http::withToken($this->apiKey)->post($baseUrl);
+		} catch (\Exception $e) {
+			\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
+			return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
+	    	}
+			session()->flash('success', 'successfully updated.');
+
+
+			//$this->redirect('/settings'); 
+
+	}
 
 	
     public function render()

@@ -26,9 +26,12 @@ class HomeController extends Controller
         return view('admin.index');
     }
     
-    public function settings()
+    
+    
+    
+    public function devicesSettings()
     {
-        return view('admin.settings');
+        return view('admin.devices.settings');
     }
     
     

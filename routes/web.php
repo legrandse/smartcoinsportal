@@ -5,6 +5,8 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\DevicesController;
+use App\Http\Controllers\LinkedDevicesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -71,4 +73,6 @@ Route::post('/confirm-password', function (Request $request) {
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/distributors/settings', [App\Http\Controllers\HomeController::class, 'settings'])->name('settings');
+Route::resource('devices', DevicesController::class);
+Route::resource('linked-devices', LinkedDevicesController::class);
+//Route::resource('/devices/settings', [App\Http\Controllers\HomeController::class, 'devicesSettings'])->name('devsettings');

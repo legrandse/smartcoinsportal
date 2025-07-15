@@ -26,39 +26,40 @@
 				</div>
 
 				
-				<form wire:change="savePayconiqValue()" > 
-				<div class="form-check form-switch">
 				
-				  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"  wire:click ="payconiqToggle" {{ $payconiqToggle ? 'checked' : ''  }} >
-				  <label class="form-check-label" for="flexSwitchCheckDefault">Payconiq</label>
+
+				<div class="form-check form-switch mb-3">
+					<input class="form-check-input" type="checkbox" role="switch"
+						id="payconiqSwitch"
+						wire:click="toggleSetting('payconiqToggle')"
+						{{ $payconiqToggle ? 'checked' : '' }}>
+					<label class="form-check-label" for="payconiqSwitch">Payconiq</label>
 				</div>
-				
-				</form>
-				
-				<form wire:change="saveStripeValue()" > 
-				<div class="form-check form-switch">
-				
-				  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"  wire:click ="stripeToggle" {{ $stripeToggle ? 'checked' : ''  }} >
-				  <label class="form-check-label" for="flexSwitchCheckDefault">Stripe</label>
-				  
+				{{--
+				<div class="form-check form-switch mb-3">
+					<input class="form-check-input" type="checkbox" role="switch"
+						id="stripeSwitch"
+						wire:click="toggleSetting('stripeToggle')"
+						{{ $stripeToggle ? 'checked' : '' }}>
+					<label class="form-check-label" for="stripeSwitch">Stripe</label>
 				</div>
-				</form>
-				<form wire:change="savePaypalValue()" > 
-				<div class="form-check form-switch">
-				
-				  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"  wire:click ="paypalToggle" {{ $paypalToggle ? 'checked' : ''  }} >
-				  <label class="form-check-label" for="flexSwitchCheckDefault">Paypal</label>
-				  
+
+				<div class="form-check form-switch mb-3">
+					<input class="form-check-input" type="checkbox" role="switch"
+						id="paypalSwitch"
+						wire:click="toggleSetting('paypalToggle')"
+						{{ $paypalToggle ? 'checked' : '' }}>
+					<label class="form-check-label" for="paypalSwitch">Paypal</label>
 				</div>
-				</form>
-				<form wire:change="saveCashValue()" > 
-				<div class="form-check form-switch">
-				
-				  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"  wire:click ="cashToggle" {{ $cashToggle ? 'checked' : ''  }} >
-				  <label class="form-check-label" for="flexSwitchCheckDefault">Cash</label>
+				--}}
+				<div class="form-check form-switch mb-3">
+					<input class="form-check-input" type="checkbox" role="switch"
+						id="cashSwitch"
+						wire:click="toggleSetting('cashToggle')"
+						{{ $cashToggle ? 'checked' : '' }}>
+					<label class="form-check-label" for="cashSwitch">Cash</label>
 				</div>
-				
-				</form>
+
 				
 				
 			
@@ -96,14 +97,23 @@
 				  <label for="formFile" class="form-label">Magasin </label>
 				  <input class="form-control use-keyboard-input @error('magasin') is-invalid @enderror" type="text" id="Magasin"  wire:model.live.debounce.500ms="magasin"> Jetons
 			</div>
-			<div class="mb-3" >
-					<label for="formFile" class="form-label">Power off Distributor </label>
-					<button type="button" wire:click="shutdownRaspberry" wire:confirm="Are you sure you want to shutdown?"><i class="fas fa-power-off" style="color: #ff0000;"></i></button>
-			</div>
+			
 			<div class="mb-3">
-				<button type="button" class="btn btn-secondary" wire:click="resetNotereader">Reset</button>
+				<button type="button" class="btn btn-primary" wire:click="resetNotereader">Reset</button>
+			</div>
+
+			<div class="mb-3">
+				<button type="button" class="btn btn-primary" wire:click="collectNotereader">Collect</button>
 			</div>
 			
+			<div class="mb-3">
+				<button type="button" class="btn btn-primary" wire:click="stackNote">Stack Note</button>
+			</div>
+			
+			<div class="mb-3" >
+				<button type="button" class="btn btn-primary float-end" wire:click="shutdownRaspberry" wire:confirm="Are you sure you want to shutdown?"><i class="fas fa-power-off" style="color: #ff0000;"></i></button>
+				<label for="formFile" class="form-label float-end mx-3">Power off Distributor </label>
+			</div>
 			<!--	<div class="form-check form-switch">
 				  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
 				  <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>

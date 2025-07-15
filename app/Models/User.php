@@ -45,4 +45,12 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+    
+    public function linkedDevices()
+	{
+	    return $this->hasMany(LinkedDevices::class);
+	}
+    
+    
+    
 }
