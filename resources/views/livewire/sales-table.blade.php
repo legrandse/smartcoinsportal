@@ -15,7 +15,6 @@
                             <th scope="col"><input class="form-check-input" type="checkbox"></th>
                             <th scope="col">Date</th>
                             <th scope="col">Amount</th>
-                            q
                             <th scope="col">Credited</th>
                             <th scope="col">Debited</th>
                             <th scope="col">Status</th>
