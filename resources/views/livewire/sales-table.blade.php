@@ -15,6 +15,8 @@
                             <th scope="col"><input class="form-check-input" type="checkbox"></th>
                             <th scope="col">Date</th>
                             <th scope="col">Amount</th>
+                            <th scope="col">Credited</th>
+                            <th scope="col">Debited</th>
                             <th scope="col">Status</th>
                             <th scope="col">Jetons</th>
                             <th scope="col">Debtor</th>
@@ -27,6 +29,8 @@
                             <td><input class="form-check-input" type="checkbox"></td>
                             <td>{{$transaction->updated_at}}</td>
                             <td>{{$transaction->amount}}€</td>
+                            <td>{{$transaction->inserted_amount}}</td>
+                            <td>{{$transaction->debited_amount}}</td>
                             <td>{{$transaction->status}}</td>
                             <td>{{$transaction->reference}}</td>
                             <td>{{$transaction->debtor}}</td>

@@ -51,7 +51,7 @@ Auth::routes();
 
 Route::get('/confirm-password', function () {
     return view('auth.confirm-password');
-})->middleware('auth')->name('password.confirm');
+})->middleware('auth')->name('password.confirmation');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $r) {
     $r->fulfill();
@@ -75,4 +75,5 @@ Route::post('/confirm-password', function (Request $request) {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('devices', DevicesController::class);
 Route::resource('linked-devices', LinkedDevicesController::class);
-//Route::resource('/devices/settings', [App\Http\Controllers\HomeController::class, 'devicesSettings'])->name('devsettings');
+Route::post('/api/payments', [App\Http\Controllers\PaymentController::class, 'store'])->name('payments');
+Route::patch('/api/payments/{payment_id}', [App\Http\Controllers\PaymentController::class, 'update'])->name('paymentsUpdate');

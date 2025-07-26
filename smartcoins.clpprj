@@ -12,27 +12,18 @@
  <removed value=";"/>
  <added value=""/>
  <lastopfiles>
-  <file name="C:\laragon\www\smartcoinsportal\config\database.php"/>
   <file name="C:\laragon\www\smartcoinsportal\routes\web.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\HomeController.php"/>
   <file name="C:\laragon\www\smartcoinsportal\app\Jobs\SyncSettingsJob.php"/>
   <file name="C:\laragon\www\smartcoinsportal\app\Livewire\ControlPanel.php"/>
   <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\control-panel.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\index.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\settings.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\DevicesController.php"/>
   <file name="C:\laragon\www\smartcoinsportal\resources\views\layouts\app.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\widget.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\table.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\chart.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\element.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\form.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\404.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\auth\login.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\sales-table.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\welcome.blade.php"/>
-  <lastactivefile name=""/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\devices\link\index.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\PaymentController.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Livewire\Charts.php"/>
+  <lastactivefile name="C:\laragon\www\smartcoinsportal\app\Livewire\Charts.php"/>
  </lastopfiles>
  <todoblock/>
  <dbgurls/>
- <lasttime value="1751641398"/>
+ <lasttime value="1753428078"/>
 </project>

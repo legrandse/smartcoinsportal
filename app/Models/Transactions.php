@@ -15,10 +15,12 @@ class Transactions extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'device',
         'payment_id',
         'status',
         'amount',
         'inserted_amount',
+        'debited_amount',
         'reference',
         'debtor',
         

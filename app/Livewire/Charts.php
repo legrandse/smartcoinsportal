@@ -18,6 +18,7 @@ class Charts extends Component
         // Exemple de récupération des données dynamiques depuis une table MySQL
         $data = DB::table('transactions')
             ->selectRaw('YEAR(created_at) as year, SUM(amount) as amount')
+            ->where('status','=','SUCCEEDED')
             ->groupBy('year')
             ->orderBy('year')
             ->get();
@@ -40,6 +41,7 @@ class Charts extends Component
         //bar chart
         $data_bar_chart = DB::table('transactions')
             ->selectRaw('reference, COUNT(reference) as total')
+            ->where('status','=','SUCCEEDED')
             ->groupBy('reference')
             //->orderBy('year')
             ->get();
