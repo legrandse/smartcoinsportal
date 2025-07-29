@@ -22,8 +22,9 @@
 
 	<div class="col-sm-12">		
 		<div class="card bg-secondary rounded p-4 mt-4">
-			<div class="card-header">
-				<h6 class="mb-4">Devices list</h6>
+			<div class="card-header d-flex justify-content-between align-items-center">
+			  <h6 class="mb-0">Devices list</h6>
+			  <a href="{{ route('linked-devices.create') }}"><i class="fas fa-plus"></i></a>
 			</div>
 			
 			<div class="card-body bg-secondary rounded p-4">

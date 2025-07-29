@@ -3,25 +3,32 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Transactions;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Transactions;
+
+
+
 
 
 class Charts extends Component
 {
-	
+	public $user;
 	public $chartData;
 	public $bar_chart;
 	
 	public function mount()
     {
+    	$this->user = auth()->user()->load('linkedDevices.device'); // Charger la relation imbriquée
+    	$serials = $this->user->linkedDevices->pluck('device.serial')->toArray();
+        
         // Exemple de récupération des données dynamiques depuis une table MySQL
-        $data = DB::table('transactions')
-            ->selectRaw('YEAR(created_at) as year, SUM(amount) as amount')
-            ->where('status','=','SUCCEEDED')
-            ->groupBy('year')
-            ->orderBy('year')
-            ->get();
+        $data = Transactions::selectRaw('YEAR(created_at) as year, SUM(amount) as amount')
+						    ->whereIn('device', $serials)
+						    ->where('status', 'SUCCEEDED')
+						    ->groupByRaw('YEAR(created_at)')
+						    ->orderByRaw('YEAR(created_at)')
+						    ->get();
             
             
 
@@ -39,12 +46,12 @@ class Charts extends Component
         ];
         
         //bar chart
-        $data_bar_chart = DB::table('transactions')
-            ->selectRaw('reference, COUNT(reference) as total')
-            ->where('status','=','SUCCEEDED')
-            ->groupBy('reference')
-            //->orderBy('year')
-            ->get();
+        $data_bar_chart = Transactions::selectRaw('reference, COUNT(reference) as total')
+							            ->whereIn('device',$serials)
+							            ->where('status','=','SUCCEEDED')
+							            ->groupBy('reference')
+							            //->orderBy('year')
+							            ->get();
         
         $this->bar_chart = [
             'labels' => $data_bar_chart->pluck('reference')->toArray(),

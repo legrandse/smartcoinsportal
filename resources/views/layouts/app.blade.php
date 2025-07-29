@@ -150,7 +150,12 @@
                             
                         </div>
                     </div> --}}
+                    
+                    
                     <a href="{{route('linked-devices.index')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Devices</a>
+                    
+                    
+                    
                     {{--<a href="{{url('form')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="{{url('table')}}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="{{url('chart')}}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
@@ -182,7 +187,7 @@
                     <input class="form-control bg-dark border-0" type="search" placeholder="Search">
                 </form>
                 <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
+                   {{-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fa fa-envelope me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">Message</span>
@@ -220,7 +225,7 @@
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item text-center">See all message</a>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fa fa-bell me-lg-2"></i>
