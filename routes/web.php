@@ -47,8 +47,19 @@ Route::get('/404', function () {
     return view('admin.404');
 });
 
-Auth::routes();
+Route::get('/email/verify', function () {
 
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
+
+
+Route::post('/email/verification-notification', function (Request $r) {
+
+    $r->user()->sendEmailVerificationNotification();
+
+    return back()->with('resent', 'Verification link sent ');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+/*
 Route::get('/confirm-password', function () {
     return view('auth.confirm-password');
 })->middleware('auth')->name('password.confirmation');
@@ -70,8 +81,8 @@ Route::post('/confirm-password', function (Request $request) {
  
     return redirect()->intended();
 })->middleware(['auth', 'throttle:6,1']);
-
-
+*/
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('devices', DevicesController::class);
 Route::resource('linked-devices', LinkedDevicesController::class);
