@@ -2,11 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DevicesController;
 use App\Http\Controllers\LinkedDevicesController;
+
+
+
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,22 +51,9 @@ Route::get('/chart', function () {
     return view('admin.chart');
 });
 
-Route::get('/404', function () {
-    return view('admin.404');
-});
-
-Route::get('/email/verify', function () {
-
-    return view('auth.verify');
-})->middleware('auth')->name('verification.notice');
 
 
-Route::post('/email/verification-notification', function (Request $r) {
 
-    $r->user()->sendEmailVerificationNotification();
-
-    return back()->with('resent', 'Verification link sent ');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 /*
 Route::get('/confirm-password', function () {
     return view('auth.confirm-password');
@@ -82,9 +77,39 @@ Route::post('/confirm-password', function (Request $request) {
     return redirect()->intended();
 })->middleware(['auth', 'throttle:6,1']);
 */
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('devices', DevicesController::class);
-Route::resource('linked-devices', LinkedDevicesController::class);
+
 Route::post('/api/payments', [App\Http\Controllers\PaymentController::class, 'store'])->name('payments');
 Route::patch('/api/payments/{payment_id}', [App\Http\Controllers\PaymentController::class, 'update'])->name('paymentsUpdate');
+
+Auth::routes();
+
+Route::middleware('auth')->group(function () {
+
+    // Page de vérification d'email
+    Route::get('/email/verify', function () {
+        return view('auth.verify');
+    })->name('verification.notice');
+
+    // Traitement de l'URL de vérification
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+        return redirect('/home');
+    })->middleware('signed')->name('verification.verify');
+
+    // Renvoi du lien de vérification
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+        return back()->with('resent', 'Verification link sent');
+    })->middleware('throttle:6,1')->name('verification.resend');
+
+    // Routes protégées par vérification d'email
+    Route::middleware('verified')->group(function () {
+        Route::get('/home', [HomeController::class, 'index'])->name('home');
+        Route::resource('devices', DevicesController::class);
+        Route::resource('linked-devices', LinkedDevicesController::class);
+    });
+});
+
+
+
+
