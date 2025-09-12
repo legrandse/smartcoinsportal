@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
+//use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 use Livewire\Attributes\Rule;
@@ -14,13 +15,14 @@ use App\Jobs\SyncSettingsJob;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
+use App\Models\Devices;
 use App\Models\Settings;
 
 class ControlPanel extends Component
 {
 	use WithFileUploads;
 	
-	
+	public $device;
 	
 	#[Rule('image|max:1024')] // 1MB Max
     public $photo;
@@ -47,24 +49,35 @@ class ControlPanel extends Component
 
 
 
-	public function mount() {
+	public function mount($device) {
 		
 		$this->apiKey = config('services.noteader.key');
 
+				
+		$this->device = $device;
 		
 		
-		$this->payconiqToggle = (bool) Settings::where('name', 'payconiq')->value('value');
-		$this->stripeToggle = (bool) Settings::where('name', 'stripe')->value('value');
-		$this->paypalToggle = (bool) Settings::where('name', 'paypal')->value('value');
-		$this->cashToggle = (bool) Settings::where('name', 'cash')->value('value');
 		
-		$this->magasin = Settings::find(8)->value;
+		$this->payconiqToggle = (bool) Settings::where('device',$this->device->serial)
+												->where('name', 'payconiq')->value('value');
+		$this->stripeToggle = (bool) Settings::where('device',$this->device->serial)
+												->where('name', 'stripe')->value('value');
+		$this->paypalToggle = (bool) Settings::where('device',$this->device->serial)
+												->where('name', 'paypal')->value('value');
+		$this->cashToggle = (bool) Settings::where('device',$this->device->serial)
+											->where('name', 'cash')->value('value');
+		
+		$this->magasin = Settings::where('device',$this->device->serial)
+								  ->where('name', 'magasin')->value('value');
         
-        $this->parity = Settings::find(5)->value;
+        $this->parity = Settings::where('device',$this->device->serial)
+        						->where('name', 'parity')->value('value');
         
-        $this->tokenArray = Settings::find(6)->value;
+        $this->tokenArray = Settings::where('device',$this->device->serial)
+        							->where('name', 'tokenArray')->value('value');
         
-        $this->ngrok = Settings::find(7)->value;
+        $this->ngrok = Settings::where('device',$this->device->serial)
+        						->where('name', 'ngrok')->value('value');
 		
 	}
 	
@@ -133,7 +146,8 @@ class ControlPanel extends Component
 		$this->$property = $newValue;
 	
 		$settingName = $propertyToSettingName[$property];
-		$settings = Settings::where('name', $settingName)->first();
+		$settings = Settings::where('device',$this->device->serial)
+							->where('name', $settingName)->first();
 	
 		if ($settings) {
 			$settings->value = $newValue;
@@ -147,7 +161,8 @@ class ControlPanel extends Component
 	#[On('updateInput')] 
 	public function updated($name,$value) {
 		//dd($name,$value);
-		$settings = Settings::where('name', $name)->first();
+		$settings = Settings::where('device',$this->device->serial)
+						->where('name', $name)->first();
 		$settings->update([
 	        
 	        	'value' => $value
@@ -156,9 +171,10 @@ class ControlPanel extends Component
         
         
         //$job = SyncSettingsJob::dispatch();
-        $response =  Http::post('https://smartcoins.ngrok.app/api/notify-settings-update', [
+        $response =  Http::post($this->ngrok.'/api/notify-settings-update', [
 		    'value' => 'settings',
 		    'data' => [
+		    	'device'=> $settings->device,
                 'name' => $settings->name,
                 'value' => $settings->value,
             ]  // Ajout en tant que paramètre GET

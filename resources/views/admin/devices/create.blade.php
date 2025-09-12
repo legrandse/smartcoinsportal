@@ -8,7 +8,7 @@
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
-@endif
+		@endif
 	<div class="col-sm-12">		
 		<div class="card bg-secondary rounded p-4 mt-4">
 			<div class="card-header ">
@@ -40,9 +40,10 @@
 			<hr>
 			
 			
-		</div>
+			</div>
 	</div>
 
+	</div>
 	</div>
 
 @endsection

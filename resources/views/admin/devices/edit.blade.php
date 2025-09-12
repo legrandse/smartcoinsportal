@@ -4,7 +4,7 @@
 	
 	<div class="container">
 
-		@livewire('control-panel')
+		@livewire('control-panel', ['device' => request('device')])
 
 	</div>
 

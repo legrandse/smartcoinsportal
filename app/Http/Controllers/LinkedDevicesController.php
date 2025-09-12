@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\LinkedDevices;
 use App\Models\Devices;
+use App\Models\Settings;
 
 
 class LinkedDevicesController extends Controller
@@ -52,6 +53,21 @@ class LinkedDevicesController extends Controller
 	    // Mettre à jour l'état du device (facultatif mais logique)
 	    $device->linked = true;
 	    $device->save();
+	    
+	    // Préparer les paramètres par défaut
+	    $settings = [
+	        ['device' => $device->serial, 'name' => 'payconiq',   'value' => 1],
+	        ['device' => $device->serial, 'name' => 'cash',       'value' => 1],
+	        ['device' => $device->serial, 'name' => 'parity',     'value' => 1],
+	        ['device' => $device->serial, 'name' => 'tokenArray', 'value' => 1],
+	        ['device' => $device->serial, 'name' => 'ngrok',      'value' => null],
+	        ['device' => $device->serial, 'name' => 'magasin',    'value' => 0],
+	    ];
+
+	    // Insérer en une seule fois
+	    Settings::insert($settings);
+	    
+	    
 
 	    // Rediriger avec bannière de succès
     	return redirect()->route('linked-devices.index')->with('success', 'Appareil lié avec succès.');
