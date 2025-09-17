@@ -44,7 +44,11 @@ class ControlPanel extends Component
 	#[Validate('required')]
 	public $ngrok;
 	
-	public $noteReaderUrl = 'https://smartcoinspython.ngrok.app';
+	public $deviceUrl = 'https://smartcoinspython.ngrok.app';
+	public $noteReaderUrl = 'https://smartcoinsnotereader.ngrok.app';
+	public $collectToggle = false;
+	public $stackToggle = false;
+	
 	public $apiKey;
 
 
@@ -95,38 +99,7 @@ class ControlPanel extends Component
             ]);
         }
 	
-	/*
-	public function savePayconiqValue() {
-		//$this->validateData();
-		$this->payconiqToggle = !$this->payconiqToggle;
-		$settings = Settings::find(1);
-        $settings->value = $this->payconiqToggle ? $this->payconiqToggle : 0;
-        $settings->save();
-	}
 	
-	public function saveStripeValue() {
-		//$this->validateData();
-		$this->stripeToggle = !$this->stripeToggle;
-		$settings = Settings::find(2);
-        $settings->value = $this->stripeToggle ? $this->stripeToggle : 0;
-        $settings->save();
-	}
-	
-	public function savePaypalValue() {
-		//$this->validateData();
-		$this->paypalToggle = !$this->paypalToggle;
-		$settings = Settings::find(3);
-        $settings->value = $this->paypalToggle ? $this->paypalToggle : 0;
-        $settings->save();
-	}
-	
-	public function saveCashValue() {
-		//$this->validateData();
-		$this->cashToggle = !$this->cashToggle;
-		$settings = Settings::find(4);
-        $settings->value = $this->cashToggle ? $this->cashToggle : 0;
-        $settings->save();
-	}*/
 
 	public function toggleSetting($property)
 	{
@@ -159,33 +132,34 @@ class ControlPanel extends Component
 	}
 	
 	#[On('updateInput')] 
-	public function updated($name,$value) {
-		//dd($name,$value);
-		$settings = Settings::where('device',$this->device->serial)
-						->where('name', $name)->first();
-		$settings->update([
-	        
-	        	'value' => $value
-	        
+	public function updated($name, $value) 
+	{
+	    $settings = Settings::where('device',$this->device->serial)
+	                        ->where('name', $name)
+	                        ->first();
+
+	    if ($settings) {
+	        $settings->update(['value' => $value]);
+	    } else {
+	        $settings = Settings::create([
+	            'device' => $this->device->serial,
+	            'name'   => $name,
+	            'value'  => $value,
 	        ]);
-        
-        
-        //$job = SyncSettingsJob::dispatch();
-        $response =  Http::post($this->ngrok.'/api/notify-settings-update', [
-		    'value' => 'settings',
-		    'data' => [
-		    	'device'=> $settings->device,
-                'name' => $settings->name,
-                'value' => $settings->value,
-            ]  // Ajout en tant que paramètre GET
-		]);
-       // dd($response->status(), $response->body());
-              
-        
-        
-        //Log::info("SyncJob : " . $job);
-        session()->flash('success', 'successfully updated.');
+	    }
+
+	    Http::post($this->ngrok.'/api/notify-settings-update', [
+	        'value' => 'settings',
+	        'data' => [
+	            'device'=> $settings->device,
+	            'name'  => $settings->name,
+	            'value' => $settings->value,
+	        ]
+	    ]);
+
+	    session()->flash('success', 'successfully updated.');
 	}
+
 	
 
 	
@@ -201,7 +175,7 @@ class ControlPanel extends Component
     
 	public function shutdownRaspberry()
 	{
-		Http::post($this->noteReaderUrl . '/shutdown', [						   
+		Http::post($this->deviceUrl . '/shutdown', [						   
 						
 						'command' => 'shutdown',					
 						
@@ -232,37 +206,47 @@ class ControlPanel extends Component
 
 	public function collectNotereader()
 	{
-		//dd('hello');
-		$baseUrl = $this->noteReaderUrl . '/collect';
-		try {
-			$response = Http::withToken($this->apiKey)->post($baseUrl);
-		} catch (\Exception $e) {
-			\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
-			return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
-	    	}
-			session()->flash('success', 'successfully updated.');
-
-
-			//$this->redirect('/settings'); 
-
+		
+		$this->stackToggle = false;
+		
+		if($this->collectToggle){
+			try {
+	            
+				$response = Http::withToken($this->apiKey)->post($this->noteReaderUrl .'/collect');
+				
+			} catch (\Exception $e) {
+				\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
+				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
+		    	}
+					
+		}
+		
+		session()->flash('success', 'successfully updated.');
 	}
 
 
 	public function stackNote()
 	{
-		//dd('hello');
-		$baseUrl = $this->noteReaderUrl . '/stack';
-		try {
-			$response = Http::withToken($this->apiKey)->post($baseUrl);
-		} catch (\Exception $e) {
-			\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
-			return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
-	    	}
-			session()->flash('success', 'successfully updated.');
-
-
-			//$this->redirect('/settings'); 
-
+		
+		$this->collectToggle = false;
+		
+		if($this->stackToggle){
+			try {
+				$response = Http::withToken($this->apiKey)->post($this->noteReaderUrl . '/enable', [
+					
+					'amount' => 0,
+					'stacking' => true
+				]);
+				
+			} catch (\Exception $e) {
+				\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
+				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
+		    	}
+				
+	 
+		}
+		
+		session()->flash('success', 'successfully updated.');
 	}
 
 	

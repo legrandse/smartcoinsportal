@@ -12,7 +12,9 @@ class LinkedDevicesController extends Controller
 {
     public function index()
     {
-        $devices =  LinkedDevices::with(['device', 'user'])->get();
+        $devices = LinkedDevices::with(['device', 'user'])
+        ->where('user_id', auth()->id()) // filtre sur l'utilisateur connecté
+        ->get();
         return view('admin.devices.link.index',compact('devices'));
     }
 

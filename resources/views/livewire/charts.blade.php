@@ -25,58 +25,58 @@
                         <h6 class="mb-0">Salse & Revenue</h6>
                         <a href="">Show All</a>
                     </div>
-                    <canvas id="salse-revenue"></canvas>
+                    <canvas id="sales-revenue"></canvas>
                 </div>
             </div>--}}
         </div>
     </div>
-    
-    <script>
-        document.addEventListener('livewire:init', () => {
-            
-            var ctx = document.getElementById('worldwide-sales').getContext('2d');
-            
-            // Récupérer les données depuis Livewire
-            var chartData = @js($chartData);
-			
-            // Créer le graphique avec Chart.js
-            new Chart(ctx, {
+</div>   
+@script
+<script>
+    let worldwideChart = null;
+    let barChart = null;
+
+    function renderWorldwideSales(data) {
+        const ctx = document.getElementById('worldwide-sales').getContext('2d');
+        if (worldwideChart) {
+            worldwideChart.data = data;
+            worldwideChart.update();
+        } else {
+            worldwideChart = new Chart(ctx, {
                 type: 'bar',
-                data: chartData,
-                options: {
-                    responsive: true
-                }
+                data: data,
+                options: { responsive: true }
             });
-        
-        
-        	
-        	var ctx4 = document.getElementById("bar-chart").getContext("2d");
-		    var bar_chart = @js($bar_chart);
-		    console.log(bar_chart);
-		    new Chart(ctx4, {
-		        type: "bar",
-		        data: bar_chart,
-		        options: {
-		            responsive: true
-		        }
-		    });
-        	
-        	
-        	
-        
-        });
-        
-        
-        
-        
-        
-    </script>
-    
-    <script>
-    // Single Bar Chart
-    
-    </script>
+        }
+    }
+
+    function renderBarChart(data) {
+        const ctx = document.getElementById('bar-chart').getContext('2d');
+        if (barChart) {
+            barChart.data = data;
+            barChart.update();
+        } else {
+            barChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: { responsive: true }
+            });
+        }
+    }
+	renderWorldwideSales(@js($chartData));
+    renderBarChart(@js($bar_chart));
+   
+
+   
+       $wire.on('chartsUpdated', ([payload]) => {
+    // payload est directement ton objet avec chartData et barChart
+    renderWorldwideSales(payload.chartData);
+    renderBarChart(payload.barChart);
+});
+   
+</script>
+@endscript   
    
     
     
-</div>
+

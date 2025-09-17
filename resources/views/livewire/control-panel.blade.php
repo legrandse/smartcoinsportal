@@ -98,16 +98,27 @@
 				  <input class="form-control use-keyboard-input @error('magasin') is-invalid @enderror" type="text" id="Magasin"  wire:model.live.debounce.500ms="magasin"> Jetons
 			</div>
 			
-			<div class="mb-3">
-				<button type="button" class="btn btn-primary" wire:click="resetNotereader">Reset</button>
-			</div>
-
-			<div class="mb-3">
-				<button type="button" class="btn btn-primary" wire:click="collectNotereader">Collect</button>
-			</div>
 			
-			<div class="mb-3">
-				<button type="button" class="btn btn-primary" wire:click="stackNote">Stack Note</button>
+
+			<div class="d-flex gap-2 mb-3">
+			    {{--<button type="button" class="btn btn-primary" wire:click="resetNotereader">Reset</button>--}}
+			    
+			    <div class="form-check form-switch mb-3">
+				    <input class="form-check-input" type="checkbox" role="switch"
+				        id="collectSwitch"
+				        wire:model="collectToggle"
+				        wire:change="collectNotereader">
+				    <label class="form-check-label" for="collectSwitch">Collect</label>
+				</div>
+
+				<div class="form-check form-switch mb-3">
+				    <input class="form-check-input" type="checkbox" role="switch"
+				        id="stackSwitch"
+				        wire:model="stackToggle"
+				        wire:change="stackNote">
+				    <label class="form-check-label" for="stackSwitch">Stack Note</label>
+				</div>
+			   
 			</div>
 			
 			<div class="mb-3" >

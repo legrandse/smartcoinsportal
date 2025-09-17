@@ -3,83 +3,100 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use App\Models\Transactions;
-
-
-
-
 
 class Charts extends Component
 {
-	public $user;
-	public $chartData;
-	public $bar_chart;
-	
-	public function mount()
-    {
-    	$this->user = auth()->user()->load('linkedDevices.device'); // Charger la relation imbriquée
-    	$serials = $this->user->linkedDevices->pluck('device.serial')->toArray();
-        
-        // Exemple de récupération des données dynamiques depuis une table MySQL
-        $data = Transactions::selectRaw('YEAR(created_at) as year, SUM(amount) as amount')
-						    ->whereIn('device', $serials)
-						    ->where('status', 'SUCCEEDED')
-						    ->groupByRaw('YEAR(created_at)')
-						    ->orderByRaw('YEAR(created_at)')
-						    ->get();
-            
-            
+    public $device_id;
+    public $chartData = [];
+    public $bar_chart = [];
+    public $user;
 
-        // Transformer les données pour les rendre exploitables
+    public function mount($device = null)
+    {
+        $this->user = auth()->user()->load('linkedDevices.device');
+        $this->device_id = $device ?? null;
+
+        $this->loadData();
+    }
+
+    #[On('deviceSelected')]
+    public function updateDevice($device)
+    {
+        $this->device_id = $device;
+        
+        $this->loadData($this->device_id);
+    }
+
+    private function loadData($device = null)
+    {
+        // ⚡ récupère tous les serials des devices liés à l’utilisateur
+        $serials = $this->user->linkedDevices->pluck('device.serial')->toArray();
+
+        // -------- Chart 1 (montants par année) --------
+        $query = Transactions::selectRaw('YEAR(created_at) as year, SUM(amount) as amount')
+            ->whereIn('device', $serials) // sécurité : seulement les devices de l’utilisateur
+            ->where('status', 'SUCCEEDED');
+		
+	
+		
+        // si un device précis est choisi → filtre supplémentaire
+        if ($device) {
+        	
+            $query->where('device', $device);
+        }
+
+        $data = $query->groupByRaw('YEAR(created_at)')
+                      ->orderByRaw('YEAR(created_at)')
+                      ->get();
+
         $this->chartData = [
             'labels' => $data->pluck('year')->toArray(),
-            'datasets' => [
-                [
-                    'label' => 'e',
-                    'data' => $data->pluck('amount')->toArray(),
-                    'backgroundColor' => 'rgba(255, 196, 81, .7)',
-                ],
-                
-            ],
+            'datasets' => [[
+                'label' => 'Montant total',
+                'data' => $data->pluck('amount')->toArray(),
+                'backgroundColor' => 'rgba(255, 196, 81, .7)',
+            ]],
         ];
-        
-        //bar chart
-        $data_bar_chart = Transactions::selectRaw('reference, COUNT(reference) as total')
-							            ->whereIn('device',$serials)
-							            ->where('status','=','SUCCEEDED')
-							            ->groupBy('reference')
-							            //->orderBy('year')
-							            ->get();
-        
+
+        // -------- Chart 2 (barres par référence) --------
+        $query_bar = Transactions::selectRaw('reference, COUNT(reference) as total')
+            ->whereIn('device', $serials)
+            ->where('status', 'SUCCEEDED');
+
+        if ($device) {
+            $query_bar->where('device', $device);
+        }
+
+        $data_bar_chart = $query_bar->groupBy('reference')->get();
+
         $this->bar_chart = [
             'labels' => $data_bar_chart->pluck('reference')->toArray(),
-            'datasets' => [
-                [
-                    
-                    'data' => $data_bar_chart->pluck('total')->toArray(),
-                    'backgroundColor' => [
-                    						'rgba(255, 196, 81, .7)',
-                    						'rgba(255, 196, 81, .6)',
-                    						'rgba(255, 196, 81, .5)',
-                    						'rgba(255, 196, 81, .4)',
-                    						'rgba(255, 196, 81, .3)'
-                    					],
+            'datasets' => [[
+                'data' => $data_bar_chart->pluck('total')->toArray(),
+                'backgroundColor' => [
+                    'rgba(255, 196, 81, .7)',
+                    'rgba(255, 196, 81, .6)',
+                    'rgba(255, 196, 81, .5)',
+                    'rgba(255, 196, 81, .4)',
+                    'rgba(255, 196, 81, .3)',
                 ],
-                
-            ],
+            ]],
         ];
         
-        
-        
-        
-        
+        // ⚡ Émettre un event Livewire v3 pour le JS
+        $this->dispatch('chartsUpdated', [
+            'chartData' => $this->chartData,
+            'barChart' => $this->bar_chart,
+        ]);
         
     }
-	
+
     public function render()
     {
         return view('livewire.charts');
     }
 }
+
+

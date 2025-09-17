@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Settings;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -22,7 +23,7 @@ class DatabaseSeeder extends Seeder
         ]);*/
         
         // Préparer les paramètres par défaut
-	    $settings = [
+	    /*$settings = [
 	        ['device' => $device->serial, 'name' => 'payconiq',   'value' => 1],
 	        ['device' => $device->serial, 'name' => 'cash',       'value' => 1],
 	        ['device' => $device->serial, 'name' => 'parity',     'value' => 1],
@@ -33,7 +34,7 @@ class DatabaseSeeder extends Seeder
 
 	    // Insérer en une seule fois
 	    Settings::factory()->insert($settings);
-        
+        */
         
     }
 }
