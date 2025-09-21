@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Devices;
 use App\Models\Settings;
 
+
 class ControlPanel extends Component
 {
 	use WithFileUploads;
@@ -55,7 +56,7 @@ class ControlPanel extends Component
 
 	public function mount($device) {
 		
-		$this->apiKey = config('services.noteader.key');
+		$this->apiKey = config('services.notereader.key');
 
 				
 		$this->device = $device;

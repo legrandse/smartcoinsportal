@@ -12,36 +12,19 @@
  <removed value=";"/>
  <added value=""/>
  <lastopfiles>
-  <file name="C:\laragon\www\smartcoinsportal\routes\web.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\DevicesController.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\layouts\app.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\sales-table.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\device-select.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Livewire\DeviceSelect.php"/>
   <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\index.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\sales-revenue.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\sales-table.blade.php"/>
   <file name="C:\laragon\www\smartcoinsportal\app\Livewire\Charts.php"/>
   <file name="C:\laragon\www\smartcoinsportal\app\Livewire\SalesTable.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Livewire\SalesRevenue.php"/>
   <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\charts.blade.php"/>
   <file name="C:\laragon\www\smartcoinsportal\public\admin\js\main.js"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\devices\link\index.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\devices\link\create.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\devices\create.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Models\User.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Models\Devices.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Models\LinkedDevices.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Providers\AppServiceProvider.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\auth\login.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\auth\passwords\email.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\auth\passwords\confirm.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\auth\passwords\reset.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\auth\verify.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\auth\register.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\HomeController.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\control-panel.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\welcome.blade.php"/>
-  <lastactivefile name="C:\laragon\www\smartcoinsportal\resources\views\layouts\app.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\sales-revenue.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Livewire\SalesRevenue.php"/>
+  <lastactivefile name=""/>
  </lastopfiles>
  <todoblock/>
  <dbgurls/>
- <lasttime value="1757499002"/>
+ <lasttime value="1758120151"/>
 </project>
