@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Gp Bootstrap Template</title>
+  <title>Smartcoins</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -44,7 +44,7 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <img src="{{ asset('logo.png') }}" height="200%">
+        <img src="{{ asset('logo.png') }}">
         
       </a>
 
@@ -55,7 +55,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <!--<li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -71,13 +71,13 @@
               <li><a href="#">Dropdown 3</a></li>
               <li><a href="#">Dropdown 4</a></li>
             </ul>
-          </li>
+          </li>-->
           <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 	  <a class="btn-getstarted" href="/login">Get Connected</a>
-      <a class="btn-getstarted" href="#about">Get Started</a>
+  <!--    <a class="btn-getstarted" href="#about">Get Started</a>-->
 
     </div>
   </header>
@@ -87,14 +87,14 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-      <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+      <img src="assets/img/hero5-bg.jpg" alt="" data-aos="fade-in">
 
       <div class="container">
 
         <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
           <div class="col-xl-6 col-lg-8">
-            <h2>Automatisez... Simplifiez... Gagnez du temps <span>!</span></h2>
-            <p>We are a team of talented digital creators.</p>
+            <h2>Modernes...  Connectés...  Efficaces<span>!</span></h2>
+            <p>Les distributeurs de jetons nouvelle génération</p>
           </div>
         </div>
 
@@ -145,14 +145,14 @@
             <img src="assets/img/about.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 order-2 order-lg-1 content">
-            <h3>Optimisez la distribution avec nos solutions innovantes !</h3>
+            <h3>Evitez les pertes de temps avec nos solutions innovantes !</h3>
             <p class="fst-italic">
-              Nous concevons et fabriquons des distributeurs de jetons sur mesure, adaptés à vos besoins. Fiables, sécurisés et faciles à utiliser, nos dispositifs permettent une gestion fluide et automatisée des accès, des paiements et des services.
+              Nous concevons et fabriquons des distributeurs de jetons, adaptés à vos besoins. Fiables, sécurisés et surtout faciles à utiliser !
             </p>
             <ul>
-              <li><i class="bi bi-check2-all"></i> <span>Que ce soit pour des laveries, des parkings, des bornes de jeux ou tout autre usage, nos distributeurs sont pensés pour offrir une expérience simple et efficace.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Que ce soit pour des cafétariats, clubs sportifs, parkings, bornes de jeux ou tout autre usage, nos distributeurs sont pensés pour offrir une expérience simple et efficace.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Evite la manipulation d'argent.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Utilise les dernières technologies de paiement électronique</span></li>
             </ul>
             <p>
               Faites confiance à notre expertise pour optimiser votre système de distribution !
@@ -240,24 +240,24 @@
             <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="300">
               <i class="bi bi-basket flex-shrink-0"></i>
               <div>
-                <h4>Conçus pour durer</h4>
-                <p> nos équipements intègrent les dernières innovations en matière de paiement digital, garantissant une expérience fluide et sécurisée.</p>
+                <h4>Supervision en temps réel</h4>
+                <p> grâce à son portail, vous consultez à tout moment l'évolution des ventes.</p>
               </div>
             </div><!-- End Features Item-->
 
             <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-broadcast flex-shrink-0"></i>
               <div>
-                <h4>Aut occaecati</h4>
-                <p>Que ce soit pour les laveries, parkings, bornes de jeux ou autres services, nos solutions automatisées simplifient la gestion et optimisent l’accès.</p>
+                <h4>Paramétrable à distance</h4>
+                <p> vous établissez vos paramètres sans être devant la machine.</p>
               </div>
             </div><!-- End Features Item-->
 
             <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="500">
               <i class="bi bi-camera-reels flex-shrink-0"></i>
               <div>
-                <h4>Beatae veritatis</h4>
-                <p>Optez pour la fiabilité et l’innovation avec nos distributeurs de jetons dernière génération !</p>
+                <h4>Conçus dans l'ère du temps</h4>
+                <p> nos équipements intègrent les dernières innovations en matière de paiement digital, garantissant une expérience fluide et sécurisée.</p>
               </div>
             </div><!-- End Features Item-->
 
@@ -287,9 +287,9 @@
                 <i class="bi bi-activity"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>Nesciunt Mete</h3>
+                <h3>Installation</h3>
               </a>
-              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
+              <p>Nous fournissons un service d'installation.</p>
             </div>
           </div><!-- End Service Item -->
 
