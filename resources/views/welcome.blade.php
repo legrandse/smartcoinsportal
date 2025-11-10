@@ -289,7 +289,7 @@
               <a href="service-details.html" class="stretched-link">
                 <h3>Installation</h3>
               </a>
-              <p>Nous fournissons un service d'installation.</p>
+              <p>Installation par nos soins.</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -299,9 +299,9 @@
                 <i class="bi bi-broadcast"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>Eosle Commodi</h3>
+                <h3>Entretien</h3>
               </a>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
+              <p>Afin de maintenir un fonctionnement de qualité, il est préconiser d'entretenir le matériel 1x par an.</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -311,12 +311,12 @@
                 <i class="bi bi-easel"></i>
               </div>
               <a href="service-details.html" class="stretched-link">
-                <h3>Ledo Markt</h3>
+                <h3>Personnalisation</h3>
               </a>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
+              <p>A votre demande, nous pouvons customiser l'apparence du distributeur.</p>
             </div>
           </div><!-- End Service Item -->
-
+{{--
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item position-relative">
               <div class="icon">
@@ -355,7 +355,7 @@
               <a href="service-details.html" class="stretched-link"></a>
             </div>
           </div><!-- End Service Item -->
-
+--}}
         </div>
 
       </div>

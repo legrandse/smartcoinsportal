@@ -52,7 +52,11 @@ class ControlPanel extends Component
 	
 	public $apiKey;
 
+	public $denomination; // ex: 0.50
+    public $quantity = 1; // ex: 3
+    
 
+    public $denominations = [0.10, 0.20, 0.50, 1, 2];
 
 	public function mount($device) {
 		
@@ -204,6 +208,53 @@ class ControlPanel extends Component
 			//$this->redirect('/settings'); 
 
 	}
+	
+	public function collectHopper()
+	{
+		//dd('hello');
+		$baseUrl = $this->noteReaderUrl . '/collectHopper';
+		try {
+            
+			$response = Http::withToken($this->apiKey)->post($baseUrl);
+			
+		} catch (\Exception $e) {
+			\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
+			return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
+	    	}
+			//session()->flash('success', 'successfully updated.');
+
+
+			//$this->redirect('/settings'); 
+
+	}
+	
+	
+	public function stackHopper()
+    {
+        $this->validate([
+            'quantity' => 'required|integer|min:1',
+            'denomination' => 'required|numeric|min:0.1',
+        ]);
+
+
+        try {
+            $response = Http::withToken($this->apiKey)->post($this->noteReaderUrl . '/hopperStack', [
+                'amount' => $this->quantity,
+                'denomination' => $this->denomination,
+            ]);
+
+            if ($response->failed()) {
+                throw new \Exception("Erreur API : " . $response->body());
+            }
+
+            session()->flash('success', 'Requête envoyée avec succès !');
+        } catch (\Exception $e) {
+            Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
+            session()->flash('error', 'Une erreur est survenue : ' . $e->getMessage());
+        }
+    }
+	
+	
 
 	public function collectNotereader()
 	{
@@ -243,8 +294,16 @@ class ControlPanel extends Component
 				\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
 				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
 		    	}
+		}
+		else {
+			try {
+				$response = Http::withToken($this->apiKey)->post($this->noteReaderUrl . '/disable');
 				
-	 
+			} catch (\Exception $e) {
+				\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
+				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
+		    	}
+			
 		}
 		
 		session()->flash('success', 'successfully updated.');

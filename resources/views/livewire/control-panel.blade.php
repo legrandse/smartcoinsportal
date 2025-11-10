@@ -15,7 +15,7 @@
 				  <label for="formFile" class="form-label">Logo </label>
 				  <form wire:submit="save">
 				      @if ($photo) 
-				        <img src="{{ $photo->temporaryUrl() }}">
+				        <img src="{{ $photo->temporaryUrl() }}" class="img-thumbnail">
 				    @endif
 					    <input class="form-control" type="file" wire:model="photo">
 					 
@@ -99,24 +99,53 @@
 			</div>
 			
 			
+			<label for="formFile" class="form-label">Inventaire initial pièces </label>
+			<div class="d-flex gap-2 mb-3">
+				
+				<select wire:model="denomination" class="form-select">
+				    <option value="">-- Choisir --</option>
+				    @foreach($denominations as $value)
+				        <option value="{{ $value }}">{{ number_format($value, 2, ',', ' ') }} €</option>
+				    @endforeach
+				</select>
+			
+			
+		        <label class="form-label">Quantité</label>
+		        <input type="number" wire:model="quantity" min="1" class="form-control" />
+		        @error('quantity') <span class="error">{{ $message }}</span> @enderror
+		    </div>
+			
+			<div class="mb-3">
+				<button wire:click="stackHopper" class="btn btn-primary">Envoyer</button>
+			</div>
+			
+			
+			<hr>
+	
+			<div class="form-check form-switch mb-3">
+				<input class="form-check-input" type="checkbox" role="switch" wire:click="collectHopper">
+				<label class="form-check-label" for="stripeSwitch">Collect Hopper</label>
+			</div>
 
 			<div class="d-flex gap-2 mb-3">
 			    {{--<button type="button" class="btn btn-primary" wire:click="resetNotereader">Reset</button>--}}
 			    
+			    
+			    
 			    <div class="form-check form-switch mb-3">
-				    <input class="form-check-input" type="checkbox" role="switch"
-				        id="collectSwitch"
-				        wire:model="collectToggle"
-				        wire:change="collectNotereader">
-				    <label class="form-check-label" for="collectSwitch">Collect</label>
+					<input class="form-check-input" type="checkbox" role="switch"
+						
+						wire:click="collectNotereader"
+						>
+					<label class="form-check-label" for="stripeSwitch">Collect Notereader</label>
 				</div>
-
-				<div class="form-check form-switch mb-3">
-				    <input class="form-check-input" type="checkbox" role="switch"
-				        id="stackSwitch"
-				        wire:model="stackToggle"
-				        wire:change="stackNote">
-				    <label class="form-check-label" for="stackSwitch">Stack Note</label>
+			    
+			    <div class="form-check form-switch mb-3">
+					<input class="form-check-input" type="checkbox" role="switch"
+						
+						wire:click="stackNote"
+						>
+					<label class="form-check-label" for="stripeSwitch">Stack 10€ Notes</label>
 				</div>
 			   
 			</div>

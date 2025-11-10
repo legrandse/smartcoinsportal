@@ -12,19 +12,9 @@
  <removed value=";"/>
  <added value=""/>
  <lastopfiles>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\device-select.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Livewire\DeviceSelect.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\index.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\sales-table.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Livewire\Charts.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Livewire\SalesTable.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\charts.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\public\admin\js\main.js"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\sales-revenue.blade.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Livewire\SalesRevenue.php"/>
   <lastactivefile name=""/>
  </lastopfiles>
  <todoblock/>
  <dbgurls/>
- <lasttime value="1758120151"/>
+ <lasttime value="1759147305"/>
 </project>
