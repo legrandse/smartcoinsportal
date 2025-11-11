@@ -77,7 +77,7 @@ Route::post('/confirm-password', function (Request $request) {
     return redirect()->intended();
 })->middleware(['auth', 'throttle:6,1']);
 */
-
+Route::post('/api/get-levels', [App\Http\Controllers\HopperController::class, 'store'])->name('get-levels');
 Route::post('/api/payments', [App\Http\Controllers\PaymentController::class, 'store'])->name('payments');
 Route::patch('/api/payments/{payment_id}', [App\Http\Controllers\PaymentController::class, 'update'])->name('paymentsUpdate');
 
