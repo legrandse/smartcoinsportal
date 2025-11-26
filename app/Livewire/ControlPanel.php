@@ -258,9 +258,9 @@ class ControlPanel extends Component
 
 	public function collectNotereader()
 	{
-		
 		$this->stackToggle = false;
-		
+		//$this->collectToggle = !$this->collectToggle;
+			
 		if($this->collectToggle){
 			try {
 	            
@@ -272,6 +272,16 @@ class ControlPanel extends Component
 		    	}
 					
 		}
+		else {
+			try {
+				$response = Http::withToken($this->apiKey)->post($this->noteReaderUrl . '/disable');
+				
+			} catch (\Exception $e) {
+				\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
+				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
+		    	}
+			
+		}
 		
 		session()->flash('success', 'successfully updated.');
 	}
@@ -281,7 +291,8 @@ class ControlPanel extends Component
 	{
 		
 		$this->collectToggle = false;
-		
+		//$this->stackToggle = !$this->stackToggle;
+		//dd($this->stackToggle);
 		if($this->stackToggle){
 			try {
 				$response = Http::withToken($this->apiKey)->post($this->noteReaderUrl . '/enable', [

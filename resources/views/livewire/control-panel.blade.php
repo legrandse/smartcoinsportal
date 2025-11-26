@@ -135,16 +135,18 @@
 			    <div class="form-check form-switch mb-3">
 					<input class="form-check-input" type="checkbox" role="switch"
 						
-						wire:click="collectNotereader"
-						>
+						wire:model="collectToggle"
+        				wire:change="collectNotereader">
+						
 					<label class="form-check-label" for="stripeSwitch">Collect Notereader</label>
 				</div>
 			    
 			    <div class="form-check form-switch mb-3">
 					<input class="form-check-input" type="checkbox" role="switch"
 						
-						wire:click="stackNote"
-						>
+						wire:model="stackToggle"
+       	 				wire:change="stackNote">
+						
 					<label class="form-check-label" for="stripeSwitch">Stack 10€ Notes</label>
 				</div>
 			   

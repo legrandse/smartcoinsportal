@@ -12,9 +12,13 @@
  <removed value=";"/>
  <added value=""/>
  <lastopfiles>
-  <lastactivefile name=""/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Models\HopperLevel.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\database\migrations\2025_11_11_162524_create_hopper_levels_table.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\HopperController.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\PaymentController.php"/>
+  <lastactivefile name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\HopperController.php"/>
  </lastopfiles>
  <todoblock/>
  <dbgurls/>
- <lasttime value="1759147305"/>
+ <lasttime value="1762936352"/>
 </project>

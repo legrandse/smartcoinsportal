@@ -14,6 +14,9 @@ class SalesTable extends Component
     public $user;
     public $transactions;
     public $showAll = false;
+    public $selected = []; // IDs sélectionnés
+	public $selectAll = false;
+
 
     public function mount()
     {
@@ -46,6 +49,55 @@ class SalesTable extends Component
 	    $this->transactions = $this->showAll
 	        ? $query->get()
 	        : $query->take(5)->get();
+	    
+	    $this->selectAll = count($this->selected) === $this->transactions->count();
+	    
+	}
+
+	#[On('echo:transaction,TransactionsListener')] 
+	public function refreshTransactions()
+	{
+	    $this->loadTransactions();
+	}
+	
+	
+	public function updatedSelectAll($value)
+	{
+	    if ($value) {
+	        // Sélectionner toutes les transactions affichées
+	        $this->selected = $this->transactions->pluck('id')->toArray();
+	        $this->dispatch('showDeleteButton');
+	    } else {
+	        // Désélectionner toutes
+	        $this->selected = [];
+	    }
+	    
+	}
+	
+	public function updatedSelected()
+	{
+	    $this->selectAll = count($this->selected) === $this->transactions->count();
+	    $this->dispatch('showDeleteButton');
+	}
+	
+	
+	public function deleteSelected()
+	{
+	    if (empty($this->selected)) {
+	        return; // rien à supprimer
+	    }
+
+	    Transactions::whereIn('id', $this->selected)->delete();
+
+	    // Réinitialiser la sélection
+	    $this->selected = [];
+	    $this->selectAll = false;
+
+	    // Recharger la liste
+	    $this->loadTransactions();
+
+	    // Message toast Livewire (optionnel)
+	    $this->dispatch('deleted');
 	}
 
 
@@ -55,6 +107,7 @@ class SalesTable extends Component
         $this->showAll = !$this->showAll;
         $this->loadTransactions();
     }
+
 
     public function render()
     {

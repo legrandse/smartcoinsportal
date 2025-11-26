@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Models\Transactions;
+use App\Events\TransactionsListener;
+
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 
@@ -31,6 +35,8 @@ class PaymentController extends Controller
         }
 
         $payment = Transactions::create($validator->validated());
+        
+        TransactionsListener::dispatch('transaction');
 
         return response()->json([
             'success' => true,

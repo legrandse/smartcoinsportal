@@ -1,18 +1,30 @@
 <div>
+	<!--toast message-->
+ 	<div wire:ignore class="toast align-items-right bg-primary border-0" id="toast-loading" role="alert" aria-live="assertive" aria-atomic="true">
+	  <div class="d-flex">
+	    <div class="toast-body">
+	      Nouvelle transaction...
+	    </div>
+	    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+	  </div>
+	</div>
+
     <div class="container-fluid pt-4 px-4">
         <div class="bg-secondary text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h6 class="mb-0">Recent Sales</h6>
+                <button class="btn btn-danger d-none" id="deleteBtn" wire:click="deleteSelected" wire:confirm="Are you sure you want to delete this transaction?"  @disabled(empty($selected))>Delete Selected</button>
                 <a href="#" wire:click.prevent="toggleShowAll">
                     {{ $showAll ? 'Show Recent' : 'Show All' }}
                 </a>
+                
             </div>
             
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
                     <thead>
                         <tr class="text-white">
-                            <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                            <th scope="col"><input class="form-check-input" type="checkbox" wire:model.live="selectAll"></th>
                             <th scope="col">Date</th>
                             <th scope="col">Amount</th>
                             <th scope="col">Credited</th>
@@ -26,7 +38,7 @@
                     <tbody>
                     @foreach($transactions as $transaction)
                         <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
+                            <td><input class="form-check-input" type="checkbox" value="{{ $transaction->id }}" wire:model.live="selected"></td>
                             <td>{{$transaction->updated_at}}</td>
                             <td>{{$transaction->amount}}€</td>
                             <td>{{$transaction->inserted_amount}}</td>
@@ -43,3 +55,43 @@
         </div>
     </div>
 </div>
+@script
+	<script>
+		Echo.channel('transaction')
+		.listen('TransactionsListener', e => {
+		    console.log(e.transaction)
+		    $(function(){
+		 		 
+				  $('#toast-loading').toast('show');
+
+		          
+				});
+		});
+	  
+	</script>
+@endscript   
+@script
+	<script>
+		$wire.on('showDeleteButton', (event) => {
+			console.log('delete');
+			$(function(){
+				const show = document.getElementById('deleteBtn');
+				show.classList.remove('d-none');
+
+				/*setTimeout(() => {
+					window.location.href = "/";
+				}, 6000);*/
+			});
+		});
+	</script>
+@endscript
+
+@script
+<script>
+Livewire.on('deleted', () => {
+    // Afficher un petit toast bootstrap
+    $('#toast-loading .toast-body').text("Transactions deleted.");
+    $('#toast-loading').toast('show');
+});
+</script>
+@endscript
