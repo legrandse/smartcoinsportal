@@ -12,13 +12,75 @@
  <removed value=";"/>
  <added value=""/>
  <lastopfiles>
-  <file name="C:\laragon\www\smartcoinsportal\app\Models\HopperLevel.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\database\migrations\2025_11_11_162524_create_hopper_levels_table.php"/>
   <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\HopperController.php"/>
   <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\PaymentController.php"/>
-  <lastactivefile name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\HopperController.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\js\bootstrap.js"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Events\TransactionsListener.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\routes\channels.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Livewire\SalesTable.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\sales-table.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Models\Settings.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Models\User.php"/>
+  <lastactivefile name=""/>
  </lastopfiles>
- <todoblock/>
+ <todoblock>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\debug\src\browser.js">
+   <todo pos="2;110" name="TODO: add a `localStorage` variable to explicitly enable/disable colors"/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\engine.io-client\dist\engine.io.js">
+   <todo pos="2;1178" name="TODO: add a `localStorage` variable to explicitly enable/disable colors"/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\laravel-echo\src\echo.ts">
+   <todo pos="9;182" name="TODO: This package is deprecated and we should remove it in a future version."/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\pusher-js\dist\node\pusher.js">
+   <todo pos="5;501" name="TODO(dchest): methods to encode chunk-by-chunk."/>
+   <todo pos="10;2532" name="TODO Prevent looped redirects"/>
+   <todo pos="9;2532" name="@TODO Prevent looped redirects"/>
+   <todo pos="12;2552" name="TODO Check if an XHR event needs to be fired here"/>
+   <todo pos="11;2552" name="@TODO Check if an XHR event needs to be fired here"/>
+   <todo pos="10;2743" name="TODO figure out InspectorInstrumentation::didLoadXHR(cookie)"/>
+   <todo pos="9;2743" name="@TODO figure out InspectorInstrumentation::didLoadXHR(cookie)"/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\pusher-js\dist\web\pusher-with-encryption.js">
+   <todo pos="5;139" name="TODO(dchest): methods to encode chunk-by-chunk."/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\pusher-js\dist\web\pusher.js">
+   <todo pos="5;139" name="TODO(dchest): methods to encode chunk-by-chunk."/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\pusher-js\dist\worker\pusher-with-encryption.worker.js">
+   <todo pos="5;139" name="TODO(dchest): methods to encode chunk-by-chunk."/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\pusher-js\dist\worker\pusher.worker.js">
+   <todo pos="5;139" name="TODO(dchest): methods to encode chunk-by-chunk."/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\pusher-js\spec\config\karma\config.common.js">
+   <todo pos="8;45" name="todo Enable random order execution (i.e. remove this flag) and fix tests that are broken"/>
+   <todo pos="7;45" name="@todo Enable random order execution (i.e. remove this flag) and fix tests that are broken"/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\pusher-js\spec\javascripts\integration\core\cluster_config_spec.js">
+   <todo pos="7;119" name="TODO fix how versions work in unit tests"/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\pusher-js\spec\javascripts\integration\core\pusher_spec\index.js">
+   <todo pos="7;33" name="TODO fix how versions work in unit tests"/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\socket.io-client\dist\socket.io.js">
+   <todo pos="2;2798" name="TODO: add a `localStorage` variable to explicitly enable/disable colors"/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js">
+   <todo pos="6;271" name="TODO Make this case insensitive"/>
+   <todo pos="5;271" name="@TODO Make this case insensitive"/>
+   <todo pos="10;425" name="TODO Prevent looped redirects"/>
+   <todo pos="9;425" name="@TODO Prevent looped redirects"/>
+   <todo pos="12;454" name="TODO Check if an XHR event needs to be fired here"/>
+   <todo pos="11;454" name="@TODO Check if an XHR event needs to be fired here"/>
+   <todo pos="8;684" name="TODO figure out InspectorInstrumentation::didLoadXHR(cookie)"/>
+   <todo pos="7;684" name="@TODO figure out InspectorInstrumentation::didLoadXHR(cookie)"/>
+  </todofile>
+  <todofile name="C:\laragon\www\smartcoinsportal\vendor\react\socket\src\StreamEncryption.php">
+   <todo pos="9;65" name="TODO: add write() event to make sure we're not sending any excessive data"/>
+  </todofile>
+ </todoblock>
  <dbgurls/>
- <lasttime value="1762936352"/>
+ <lasttime value="1766218703"/>
 </project>

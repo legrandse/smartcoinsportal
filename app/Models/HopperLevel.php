@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class HopperLevel extends Model
 {
-    use HasFactory;
+    //use HasFactory;
 
     // Nom de la table
     protected $table = 'hopper_levels';

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DevicesController;
 use App\Http\Controllers\LinkedDevicesController;
-
+use App\Http\Controllers\SettingsController;
 
 
 
@@ -77,8 +77,9 @@ Route::post('/confirm-password', function (Request $request) {
     return redirect()->intended();
 })->middleware(['auth', 'throttle:6,1']);
 */
-Route::post('/api/get-levels', [App\Http\Controllers\HopperController::class, 'store'])->name('get-levels');
+Route::post('/api/get-levels', [App\Http\Controllers\HopperController::class, 'receiveLevels'])->name('get-levels');
 Route::post('/api/payments', [App\Http\Controllers\PaymentController::class, 'store'])->name('payments');
+Route::post('/api/settings/update', [App\Http\Controllers\SettingsController::class, 'update'])->name('settings');
 Route::patch('/api/payments/{payment_id}', [App\Http\Controllers\PaymentController::class, 'update'])->name('paymentsUpdate');
 
 Auth::routes();

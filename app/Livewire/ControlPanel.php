@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Log;
 
 use App\Models\Devices;
 use App\Models\Settings;
+use App\Models\HopperLevel;
 
 
 class ControlPanel extends Component
@@ -56,7 +57,7 @@ class ControlPanel extends Component
     public $quantity = 1; // ex: 3
     
 
-    public $denominations = [0.10, 0.20, 0.50, 1, 2];
+    public $hopperLevels = [];
 
 	public function mount($device) {
 		
@@ -84,6 +85,8 @@ class ControlPanel extends Component
         
         $this->tokenArray = Settings::where('device',$this->device->serial)
         							->where('name', 'tokenArray')->value('value');
+        
+        $this->hopperLevels = HopperLevel::orderBy('value_eur')->get();
         
         $this->ngrok = Settings::where('device',$this->device->serial)
         						->where('name', 'ngrok')->value('value');

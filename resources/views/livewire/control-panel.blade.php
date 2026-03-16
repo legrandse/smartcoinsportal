@@ -104,13 +104,15 @@
 				
 				<select wire:model="denomination" class="form-select">
 				    <option value="">-- Choisir --</option>
-				    @foreach($denominations as $value)
-				        <option value="{{ $value }}">{{ number_format($value, 2, ',', ' ') }} €</option>
-				    @endforeach
+				    @foreach($hopperLevels as $level)
+						<option value="{{ $level->value_eur }}">
+							{{ number_format($level->value_eur, 2, ',', ' ') }} € ({{ $level->denomination_level }} disponibles)
+						</option>
+					@endforeach
 				</select>
 			
 			
-		        <label class="form-label">Quantité</label>
+		        <label class="form-label">ajouter</label>
 		        <input type="number" wire:model="quantity" min="1" class="form-control" />
 		        @error('quantity') <span class="error">{{ $message }}</span> @enderror
 		    </div>
