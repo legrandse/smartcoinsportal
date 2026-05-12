@@ -39,10 +39,13 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet">
 	
+	<!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
     <!-- Template Stylesheet -->
     <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
     
-   
+    
 
     
 </head>
@@ -313,7 +316,8 @@
     <script src="{{asset('admin/lib/tempusdominus/js/moment.min.js')}}"></script>
     <script src="{{asset('admin/lib/tempusdominus/js/moment-timezone.min.js')}}"></script>
     <script src="{{asset('admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	
     <!-- Template Javascript -->
     <script src="{{asset('admin/js/main.js')}}"></script>
     

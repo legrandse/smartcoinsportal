@@ -31,8 +31,9 @@
                             <th scope="col">Debited</th>
                             <th scope="col">Status</th>
                             <th scope="col">Jetons</th>
+                            <th scope="col">Type</th>
                             <th scope="col">Debtor</th>
-                            <th scope="col">Action</th>
+                            <!--<th scope="col">Action</th>-->
                         </tr>
                     </thead>
                     <tbody>
@@ -41,12 +42,13 @@
                             <td><input class="form-check-input" type="checkbox" value="{{ $transaction->id }}" wire:model.live="selected"></td>
                             <td>{{$transaction->updated_at}}</td>
                             <td>{{$transaction->amount}}€</td>
-                            <td>{{$transaction->inserted_amount}}</td>
-                            <td>{{$transaction->debited_amount}}</td>
+                            <td>{{$transaction->inserted_amount}}€</td>
+                            <td>{{$transaction->debited_amount}}€</td>
                             <td>{{$transaction->status}}</td>
                             <td>{{$transaction->reference}}</td>
+                            <td>@if($transaction->debtor == '')Cash @else Bancontact @endif</td>
                             <td>{{$transaction->debtor}}</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                           <!-- <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>-->
                         </tr>
                     @endforeach 
                     </tbody>

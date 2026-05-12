@@ -11,6 +11,7 @@ class Charts extends Component
     public $device_id;
     public $chartData = [];
     public $bar_chart = [];
+    public $donut_chart = [];
     public $user;
 
     public function mount($device = null)
@@ -60,6 +61,9 @@ class Charts extends Component
             ]],
         ];
 
+
+
+
         // -------- Chart 2 (barres par référence) --------
         $query_bar = Transactions::selectRaw('reference, COUNT(reference) as total')
             ->whereIn('device', $serials)
@@ -69,7 +73,10 @@ class Charts extends Component
             $query_bar->where('device', $device);
         }
 
-        $data_bar_chart = $query_bar->groupBy('reference')->get();
+        $data_bar_chart = $query_bar->groupBy('reference')
+        							->orderBy('reference')
+        							->get();
+        //dd($data_bar_chart);
 
         $this->bar_chart = [
             'labels' => $data_bar_chart->pluck('reference')->toArray(),
@@ -85,10 +92,46 @@ class Charts extends Component
             ]],
         ];
         
+        // -------- Chart 3 (barres par transaction) --------
+        // On définit la base de la requête
+		$query = Transactions::whereIn('device', $serials)
+		    ->where('status', 'SUCCEEDED');
+
+		if ($device) {
+		    $query->where('device', $device);
+		}
+
+		// Requête spécifique pour le donut
+		$data_donut = $query
+		    ->selectRaw("
+		        CASE 
+		            WHEN debtor IS NULL OR debtor = '' THEN 'Cash' 
+		            ELSE 'Bancontact' 
+		        END as status_debtor, 
+		        COUNT(*) as total
+		    ")
+		    ->groupBy('status_debtor')
+		    ->get();
+
+		$this->donut_chart = [
+		    'labels' => $data_donut->pluck('status_debtor')->toArray(),
+		    'datasets' => [[
+		        'label' => 'Répartition',
+		        'data' => $data_donut->pluck('total')->toArray(),
+		        'backgroundColor' => [
+		            'rgba(255, 196, 81, .8)', // Couleur pour le premier groupe
+		            'rgba(54, 162, 235, .8)', // Couleur pour le deuxième groupe
+		        ],
+		    ]],
+		];
+        
+        
+        
         // ⚡ Émettre un event Livewire v3 pour le JS
         $this->dispatch('chartsUpdated', [
             'chartData' => $this->chartData,
             'barChart' => $this->bar_chart,
+            'donutChart' => $this->donut_chart
         ]);
         
     }
