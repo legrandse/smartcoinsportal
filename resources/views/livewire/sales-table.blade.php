@@ -60,7 +60,7 @@
 @script
 	<script>
 	//const deviceSerial = "SN-12345";
-		Echo.private('transaction.${deviceSerial}')
+		Echo.private(`transaction.${deviceSerial}`)
 		.listen('TransactionsListener', e => {
 		    console.log(e.transaction)
 		    $(function(){
