@@ -54,11 +54,30 @@ class SalesTable extends Component
 	    
 	}
 
-	#[On('echo:transaction,TransactionsListener')] 
+	//#[On('echo:transaction,TransactionsListener')] 
 	public function refreshTransactions()
 	{
 	    $this->loadTransactions();
 	}
+	
+	public function getListeners()
+	{
+	    $user = auth()->user();
+	    $listeners = [];
+
+	    // On parcourt les appareils liés pour créer un écouteur par canal privé
+	    foreach ($user->linkedDevices as $linked) {
+	        $serial = $linked->device->serial;
+	        
+	        // Syntaxe : echo-private:{canal},{événement}
+	        // Sans broadcastAs, l'événement est le namespace complet précédé d'un point
+	        $listeners["echo-private:transaction.{$serial},.App\Events\TransactionsListener"] = 'refreshTransactions';
+	    }
+
+	    return $listeners;
+	}
+	
+	
 	
 	
 	public function updatedSelectAll($value)
