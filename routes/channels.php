@@ -8,9 +8,9 @@ use App\Models\Transactions;
 use App\Models\Devices;
 
 Broadcast::channel('transaction.{device}', function (User $user, $device) {
-    dd($device);
-    
-    return $user->id === (int) $id;
+    $deviceId = Devices::where('serial',$device)->first();
+    $ownerDevice = LinkedDevices::where('device_id',$deviceId->id)->first();
+    return $user->id ===  $ownerDevice->user_id;
 });
 /*
 Broadcast::channel('transaction.{deviceName}', function (Devices $device, $deviceName) {
