@@ -28,7 +28,7 @@ class DevicesController extends Controller
             'model' => 'required|max:255',
         ]);
 
-        Device::create($request->only(['serial', 'model']));
+        Devices::create($request->only(['serial', 'model']));
 
         return redirect()->route('devices.index')->with('success', 'Device créé avec succès.');
     }
