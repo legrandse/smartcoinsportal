@@ -10,6 +10,8 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Transactions;
+use App\Models\User;
+
 
 class TransactionsListener implements ShouldBroadcast
 {
@@ -18,7 +20,7 @@ class TransactionsListener implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct(public $transaction)
+    public function __construct(public $user)
     {
         //
     }
@@ -31,9 +33,9 @@ class TransactionsListener implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            //new PrivateChannel('transaction.'.$this->transaction->device),
+            new PrivateChannel('user.'.$this->user->id),
             //new Channel('transaction.'.$this->transaction->device),
-            new Channel('transaction'),
+            //new Channel('transaction'),
         ];
     }
 }

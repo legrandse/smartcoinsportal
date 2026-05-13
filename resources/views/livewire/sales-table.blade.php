@@ -59,7 +59,7 @@
 </div>
 @script
 	<script>
-		Echo.channel('transaction')
+		Echo.private('user.${userId}')
 		.listen('TransactionsListener', e => {
 		    console.log(e.transaction)
 		    $(function(){

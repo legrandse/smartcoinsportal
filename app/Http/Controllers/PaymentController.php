@@ -70,7 +70,9 @@ class PaymentController extends Controller
 				->latest('created_at')->first();
 
         $transaction->update($validator->validated());
-
+		
+		TransactionsListener::dispatch('transaction');
+		
         return response()->json([
             'success' => true,
             'data' => $transaction,
