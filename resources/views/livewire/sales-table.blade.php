@@ -1,6 +1,6 @@
 <div>
 	<!--toast message-->
- 	<div wire:ignore class="toast align-items-right bg-primary border-0" id="toast-loading" role="alert" aria-live="assertive" aria-atomic="true">
+ 	<div  class="toast align-items-right bg-primary border-0" id="toast-loading" role="alert" aria-live="assertive" aria-atomic="true">
 	  <div class="d-flex">
 	    <div class="toast-body">
 	      Nouvelle transaction...
