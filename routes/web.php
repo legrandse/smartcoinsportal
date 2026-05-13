@@ -106,7 +106,13 @@ Route::middleware('auth')->group(function () {
     // Routes protégées par vérification d'email
     Route::middleware('verified')->group(function () {
         Route::get('/home', [HomeController::class, 'index'])->name('home');
-        Route::resource('devices', DevicesController::class);
+        // On protège UNIQUEMENT la création
+	    Route::get('/devices/create', [DevicesController::class, 'create'])
+	        ->middleware('admin')
+	        ->name('devices.create');
+
+	    // Le reste du resource (index, show, store, etc.) reste accessible
+	    Route::resource('devices', DevicesController::class)->except(['create']);
         Route::resource('linked-devices', LinkedDevicesController::class);
     });
 });
