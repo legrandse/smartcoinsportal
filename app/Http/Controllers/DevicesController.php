@@ -25,10 +25,10 @@ class DevicesController extends Controller
     {
         $request->validate([
             'serial' => 'required|unique:devices,serial|max:255',
-            'ref' => 'required|max:255',
+            'model' => 'required|max:255',
         ]);
 
-        Device::create($request->only(['serial', 'ref']));
+        Device::create($request->only(['serial', 'model']));
 
         return redirect()->route('devices.index')->with('success', 'Device créé avec succès.');
     }
@@ -47,7 +47,7 @@ class DevicesController extends Controller
             'ref' => 'required|max:255',
         ]);
 
-        $device->update($request->only(['serial', 'ref']));
+        $device->update($request->only(['serial', 'model']));
 
         return redirect()->route('devices.index')->with('success', 'Device mis à jour.');
     }
