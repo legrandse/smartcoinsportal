@@ -59,7 +59,7 @@
 </div>
 @script
 	<script>
-	const deviceSerial = "{{ $transaction->device }}";
+	const deviceSerial = null;
 		Echo.private(`transaction.${deviceSerial}`)
 		.listen('TransactionsListener', e => {
 		    console.log(e.transaction)
@@ -69,7 +69,7 @@
 
 		          
 				});
-			$wire.$refresh();
+			
 		});
 	  
 	</script>
