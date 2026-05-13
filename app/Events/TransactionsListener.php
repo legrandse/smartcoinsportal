@@ -20,7 +20,7 @@ class TransactionsListener implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct(public $user)
+    public function __construct(public User $user)
     {
         //
     }
