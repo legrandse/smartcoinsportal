@@ -224,7 +224,7 @@ class ControlPanel extends Component
 			\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
 			return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
 	    	}
-			//session()->flash('success', 'successfully updated.');
+		session()->flash('success', 'successfully updated.');
 
 
 			//$this->redirect('/settings'); 
