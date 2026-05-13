@@ -36,7 +36,7 @@ class PaymentController extends Controller
 
         $payment = Transactions::create($validator->validated());
         
-        TransactionsListener::dispatch('transaction');
+        TransactionsListener::dispatch($transaction);
 
         return response()->json([
             'success' => true,
