@@ -65,21 +65,7 @@
 		    $('#toast-loading').toast('show');
 		});
 	</script>
-	<!--<script>
-	const deviceSerial = "{{ $transaction->device }}";
-		Echo.private(`transaction.${deviceSerial}`)
-		.listen('TransactionsListener', e => {
-		    console.log(e.transaction)
-		    $(function(){
-		 		 
-				  $('#toast-loading').toast('show');
-
-		          
-				});
-			
-		});
-	  
-	</script>-->
+	
 	
 @endscript   
 @script
