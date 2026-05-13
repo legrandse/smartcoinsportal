@@ -11,7 +11,7 @@ class DevicesController extends Controller
     public function index()
     {
         $devices = Devices::all();
-        return view('admin.devices.index', compact('devices'));
+        return view('admin.link.index', compact('devices'));
     }
 
     // Formulaire de création
@@ -49,13 +49,13 @@ class DevicesController extends Controller
 
         $device->update($request->only(['serial', 'model']));
 
-        return redirect()->route('devices.create')->with('success', 'Device mis à jour.');
+        return redirect()->route('devices.link.index')->with('success', 'Device mis à jour.');
     }
 
     // Supprime un device
     public function destroy(Devices $device)
     {
         $device->delete();
-        return redirect()->route('devices.create')->with('success', 'Device supprimé.');
+        return redirect()->route('devices.link.index')->with('success', 'Device supprimé.');
     }
 }
