@@ -16,9 +16,9 @@
             </div>
             
             <div class="card-body bg-secondary rounded p-4">
-                {{-- 1. Ajout de la balise FORM pointant vers la méthode store --}}
+                
                 <form action="{{ route('devices.store') }}" method="POST">
-                    @csrf {{-- 2. Protection contre les attaques CSRF --}}
+                    @csrf 
 
                     <hr>
                     
@@ -31,7 +31,7 @@
                             {{-- 3. Ajout de l'attribut 'name' et de 'value' pour garder la saisie en cas d'erreur --}}
                             <input class="form-control @error('serial') is-invalid @enderror" 
                                    type="text" 
-                                   id="serial" 
+                                   
                                    name="serial" 
                                    value="{{ old('serial') }}">
                             @error('serial')
@@ -43,14 +43,14 @@
                     {{-- Champ Name --}}
                     <div class="row mb-3 mt-3">
                         <div class="col-md-3">    
-                            <label for="name" class="form-label text-white">Name :</label>
+                            <label for="model" class="form-label text-white">Model :</label>
                         </div>
                         <div class="col-md-4">
-                            <input class="form-control @error('name') is-invalid @enderror" 
+                            <input class="form-control @error('model') is-invalid @enderror" 
                                    type="text" 
-                                   id="name" 
-                                   name="name" 
-                                   value="{{ old('name') }}">
+                                   
+                                   name="model" 
+                                   value="{{ old('model') }}">
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
