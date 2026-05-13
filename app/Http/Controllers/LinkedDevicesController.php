@@ -64,6 +64,10 @@ class LinkedDevicesController extends Controller
 	        ['device' => $device->serial, 'name' => 'tokenArray', 'value' => 1],
 	        ['device' => $device->serial, 'name' => 'ngrok',      'value' => null],
 	        ['device' => $device->serial, 'name' => 'magasin',    'value' => 0],
+	        ['device' => $device->serial, 'name' => 'colectToggle',    'value' => 0],
+	        ['device' => $device->serial, 'name' => 'stackToggle',    'value' => 0],
+	        ['device' => $device->serial, 'name' => 'denomination',    'value' => 0],
+	        ['device' => $device->serial, 'name' => 'quantity',    'value' => 0],
 	    ];
 
 	    // Insérer en une seule fois
