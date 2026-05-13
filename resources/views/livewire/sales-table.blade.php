@@ -59,7 +59,7 @@
 </div>
 @script
 	<script>
-	//const deviceSerial = "SN-12345";
+	const deviceSerial = "{{ $transaction->device }}";
 		Echo.private(`transaction.${deviceSerial}`)
 		.listen('TransactionsListener', e => {
 		    console.log(e.transaction)
