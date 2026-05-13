@@ -30,7 +30,7 @@ class DevicesController extends Controller
 
         Devices::create($request->only(['serial', 'model']));
 
-        return redirect()->route('devices.ceate')->with('success', 'Device créé avec succès.');
+        return redirect()->route('devices.create')->with('success', 'Device créé avec succès.');
     }
 
     // Affiche le formulaire d’édition
@@ -49,13 +49,13 @@ class DevicesController extends Controller
 
         $device->update($request->only(['serial', 'model']));
 
-        return redirect()->route('devices.link.index')->with('success', 'Device mis à jour.');
+        return redirect()->route('devices.create')->with('success', 'Device mis à jour.');
     }
 
     // Supprime un device
     public function destroy(Devices $device)
     {
         $device->delete();
-        return redirect()->route('devices.link.index')->with('success', 'Device supprimé.');
+        return redirect()->route('devices.create')->with('success', 'Device supprimé.');
     }
 }
