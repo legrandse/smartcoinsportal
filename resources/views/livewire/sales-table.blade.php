@@ -67,8 +67,9 @@
 		 		 
 				  $('#toast-loading').toast('show');
 
-		          $wire.$refresh();
+		          
 				});
+			$wire.$refresh();
 		});
 	  
 	</script>
