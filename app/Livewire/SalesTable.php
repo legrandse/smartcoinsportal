@@ -54,12 +54,15 @@ class SalesTable extends Component
 	    
 	}
 
-	//#[On('echo:transaction,TransactionsListener')] 
+	//#[On('echo:transaction,TransactionsListener')] ne fonctionne pas avec un private channel
 	public function refreshTransactions()
 	{
 	    $this->loadTransactions();
+	    $this->dispatch('transaction-received');
 	}
 	
+	
+	//permet de rafraichir la table avec un private channel
 	public function getListeners()
 	{
 	    $user = auth()->user();

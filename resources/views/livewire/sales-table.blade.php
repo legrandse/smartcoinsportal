@@ -59,6 +59,13 @@
 </div>
 @script
 	<script>
+		Livewire.on('transaction-received', () => {
+		    // Afficher un petit toast bootstrap
+		    $('#toast-loading .toast-body').text("Nouvelle transaction...");
+		    $('#toast-loading').toast('show');
+		});
+	</script>
+	<!--<script>
 	const deviceSerial = "{{ $transaction->device }}";
 		Echo.private(`transaction.${deviceSerial}`)
 		.listen('TransactionsListener', e => {
@@ -72,7 +79,8 @@
 			
 		});
 	  
-	</script>
+	</script>-->
+	
 @endscript   
 @script
 	<script>
