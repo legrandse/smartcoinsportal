@@ -67,7 +67,7 @@
 		 		 
 				  $('#toast-loading').toast('show');
 
-		          
+		          $wire.$refresh();
 				});
 		});
 	  
@@ -90,11 +90,11 @@
 @endscript
 
 @script
-<script>
-Livewire.on('deleted', () => {
-    // Afficher un petit toast bootstrap
-    $('#toast-loading .toast-body').text("Transactions deleted.");
-    $('#toast-loading').toast('show');
-});
-</script>
+	<script>
+		Livewire.on('deleted', () => {
+		    // Afficher un petit toast bootstrap
+		    $('#toast-loading .toast-body').text("Transactions deleted.");
+		    $('#toast-loading').toast('show');
+		});
+	</script>
 @endscript
