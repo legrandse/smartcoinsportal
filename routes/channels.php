@@ -7,8 +7,10 @@ use App\Models\LinkedDevices;
 use App\Models\Transactions;
 use App\Models\Devices;
 
-Broadcast::channel('user.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+Broadcast::channel('transaction.{device}', function (User $user, $device) {
+    dd($device);
+    
+    return $user->id === (int) $id;
 });
 /*
 Broadcast::channel('transaction.{deviceName}', function (Devices $device, $deviceName) {

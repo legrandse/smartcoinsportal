@@ -20,7 +20,7 @@ class TransactionsListener implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct(public User $user)
+    public function __construct(public Transactions $transaction)
     {
         //
     }
@@ -33,7 +33,7 @@ class TransactionsListener implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('user.'.$this->user->id),
+            new PrivateChannel('transaction.'.$this->transaction->device),
             //new Channel('transaction.'.$this->transaction->device),
             //new Channel('transaction'),
         ];
