@@ -33,3 +33,9 @@ Route::post('/login', function (Request $request) {
     // 5. Renvoyer le token au device
     return ['token' => $token];
 });
+
+Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
+    // Supprime le token actuel utilisé pour cette requête
+    $request->user()->currentAccessToken()->delete();
+    return response()->json(['message' => 'Token supprimé']);
+});
