@@ -2,10 +2,79 @@
 
 @section('content')
 	
-	<div class="container">
+<div class="container">
 
-		@livewire('control-panel', ['device' => request('device')])
+	@if(session('success'))
+	    <div class="alert alert-success">
+	        {{ session('success') }}
+	    </div>
+	@endif
 
+	@if($errors->any())
+	    <div class="alert alert-danger">
+	        <ul class="mb-0">
+	            @foreach($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	@endif
+
+	<div class="col-sm-12">		
+		<div class="card bg-secondary rounded p-4 mt-4">
+			<div class="card-header">
+				<h6 class="mb-4">Devices list</h6>
+			</div>
+			
+			<div class="card-body bg-secondary rounded p-4">
+				<form method="POST" action="{{ route('devices.update',['device'=> request('device') ]) }}">
+					@csrf
+					@method('PATCH')
+					<div class="row mb-3 mt-3">
+						<div class="col-md-3">	
+							<label for="serial" class="form-label">Serial number :</label>
+						</div>
+						<div class="col-md-4">
+							<input class="form-control @error('serial') is-invalid @enderror" 
+							       type="text" 
+							       name="serial" 
+							       id="serial" 
+							       value="{{ $device->serial }}">
+							
+							@error('serial')
+								<div class="invalid-feedback">{{ $message }}</div>
+							@enderror
+						</div>
+					</div>
+
+					<div class="row mb-3 mt-3">
+						<div class="col-md-3">	
+							<label for="model" class="form-label">Model :</label>
+						</div>
+						<div class="col-md-4">
+							<input class="form-control @error('model') is-invalid @enderror" 
+							       type="text" 
+							       name="model" 
+							       id="model" 
+							       value="{{ $device->model }}">
+							@error('model')
+								<div class="invalid-feedback">{{ $message }}</div>
+							@enderror
+						</div>
+					</div>	
+
+					<hr>
+
+					<div class="row">
+						<div class="col-md-3"></div>
+						<div class="col-md-4">
+							<button type="submit" class="btn btn-primary">Modifier</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
+</div>
 
 @endsection

@@ -10,7 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DevicesController;
 use App\Http\Controllers\LinkedDevicesController;
 use App\Http\Controllers\SettingsController;
-
+use App\Http\Controllers\UserController;
 
 
 
@@ -107,12 +107,11 @@ Route::middleware('auth')->group(function () {
     Route::middleware('verified')->group(function () {
         Route::get('/home', [HomeController::class, 'index'])->name('home');
         // On protège UNIQUEMENT la création
-	    Route::get('/devices/create', [DevicesController::class, 'create'])
-	        ->middleware('admin')
-	        ->name('devices.create');
+	    Route::resource('devices', DevicesController::class)
+	        ->middleware('admin');
+	
 
-	    // Le reste du resource (index, show, store, etc.) reste accessible
-	    Route::resource('devices', DevicesController::class)->except(['create']);
+	    Route::resource('users', UserController::class)->only(['index', 'edit', 'update', 'destroy']);
         Route::resource('linked-devices', LinkedDevicesController::class);
     });
 });

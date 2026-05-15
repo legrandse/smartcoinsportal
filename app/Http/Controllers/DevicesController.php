@@ -11,7 +11,7 @@ class DevicesController extends Controller
     public function index()
     {
         $devices = Devices::all();
-        return view('admin.link.index', compact('devices'));
+        return view('admin.devices.index', compact('devices'));
     }
 
     // Formulaire de création
@@ -23,14 +23,14 @@ class DevicesController extends Controller
     // Enregistre un nouveau device
     public function store(Request $request)
     {
-        $request->validate([
-            'serial' => 'required|unique:devices,serial|max:255',
+       $data = $request->validate([
+            'serial' => 'required|unique:devices,serial|max:15',
             'model' => 'required|max:255',
         ]);
 
-        Devices::create($request->only(['serial', 'model']));
+        Devices::create($data);
 
-        return redirect()->route('devices.create')->with('success', 'Device créé avec succès.');
+        return redirect()->route('devices.index')->with('success', 'Device créé avec succès.');
     }
 
     // Affiche le formulaire d’édition
@@ -42,14 +42,14 @@ class DevicesController extends Controller
     // Met à jour un device
     public function update(Request $request, Devices $device)
     {
-        $request->validate([
-            'serial' => 'required|max:255|unique:devices,serial,' . $device->id,
-            'ref' => 'required|max:255',
+        $data = $request->validate([
+            'serial' => 'required|max:15|unique:devices,serial,' . $device->id,
+            'model' => 'required|max:255',
         ]);
 
-        $device->update($request->only(['serial', 'model']));
+        $device->update($data);
 
-        return redirect()->route('devices.create')->with('success', 'Device mis à jour.');
+        return redirect()->route('devices.index')->with('success', 'Device mis à jour.');
     }
 
     // Supprime un device

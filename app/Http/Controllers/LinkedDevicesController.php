@@ -79,12 +79,18 @@ class LinkedDevicesController extends Controller
     	return redirect()->route('linked-devices.index')->with('success', 'Appareil lié avec succès.');
     }
 
-    public function show(LinkedDevices $LinkedDevices)
+    public function show(LinkedDevices $linkedDevices)
     {
-        return $LinkedDevices->load(['device', 'user']);
+        return $linkedDevices->load(['device', 'user']);
     }
+    
+    public function edit(LinkedDevices $linkedDevices)
+    {
+        return view('admin.devices.link.edit', compact('linkedDevices'));
+    }
+    
 
-    public function update(Request $request, LinkedDevices $LinkedDevices)
+    public function update(Request $request, LinkedDevices $linkedDevices)
     {
         $validated = $request->validate([
             'device_id' => 'sometimes|exists:devices,id',
@@ -92,14 +98,14 @@ class LinkedDevicesController extends Controller
             'ref' => 'sometimes|string|max:255',
         ]);
 
-        $LinkedDevices->update($validated);
+        $linkedDevices->update($validated);
 
-        return $LinkedDevices;
+        return $linkedDevices;
     }
 
-    public function destroy(LinkedDevices $LinkedDevices)
+    public function destroy(LinkedDevices $linkedDevices)
     {
-        $LinkedDevices->delete();
+        $linkedDevices->delete();
 
         return response()->json(['message' => 'Deleted successfully']);
     }

@@ -18,13 +18,14 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Devices;
 use App\Models\Settings;
 use App\Models\HopperLevel;
-
+use App\Models\LinkedDevices;
 
 class ControlPanel extends Component
 {
 	use WithFileUploads;
 	
 	public $device;
+	public $linkedDevice;
 	
 	#[Rule('image|max:1024')] // 1MB Max
     public $photo;
@@ -62,12 +63,12 @@ class ControlPanel extends Component
 	public function mount($device) {
 		
 		$this->apiKey = config('services.notereader.key');
-
+		
 				
-		$this->device = $device;
+		$this->device = Devices::find($device);
 		
-		
-		
+		$this->linkedDevice = LinkedDevices::where('device_id',$this->device->id)->first();
+	
 		$this->payconiqToggle = (bool) Settings::where('device',$this->device->serial)
 												->where('name', 'payconiq')->value('value');
 		$this->stripeToggle = (bool) Settings::where('device',$this->device->serial)

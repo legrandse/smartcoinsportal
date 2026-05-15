@@ -24,7 +24,7 @@
 		<div class="card bg-secondary rounded p-4 mt-4">
 			<div class="card-header d-flex justify-content-between align-items-center">
 			  <h6 class="mb-0">Devices list</h6>
-			  <a href="{{ route('linked-devices.create') }}"><i class="fas fa-plus"></i></a>
+			  <a href="{{ route('devices.create') }}"><i class="fas fa-plus"></i></a>
 			</div>
 			
 			<div class="card-body bg-secondary rounded p-4">
@@ -33,16 +33,16 @@
 					<tr>
 						
 						<th scope="col">Name</th>	
-						
-						<th scope="col">Settings</th>	
+						<th scope="col">Serial</th>
+						<th scope="col">Edit</th>	
 					</tr>
 				</thead>
 				<tbody>
 				@foreach($devices as $device)
 					<tr>
-						<td>{{$device->ref}}</td>
-						
-						<td><a href="{{route('linked-devices.edit',['linked_device'=> $device->id])}}"  ><i class="fas fa-cog"></i></a></td>
+						<td>{{$device->model}}</td>
+						<td>{{$device->serial}}</td>
+						<td><a href="{{ route('devices.edit',['device'=> $device->id]) }}"  ><i class="fas fa-cog"></i></a></td>
 					</tr>
 				@endforeach
 				</tbody>

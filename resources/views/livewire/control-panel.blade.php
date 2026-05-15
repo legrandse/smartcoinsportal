@@ -7,10 +7,16 @@
 	<div class="col-sm-12">		
 		<div class="card bg-secondary rounded p-4 mt-4">
 			<div class="card-header ">
-			<h6 class="mb-4">Control panel</h6>
+			<h6 class="mb-4">Control panel for {{ $linkedDevice->ref }}</h6>
 			</div>
 			
 			<div class="card-body bg-secondary rounded p-4">
+				<div class="mb-3">
+				  <label for="formFile" class="form-label">Serial </label>
+				  <input class="form-control" type="texte" value="{{ $device->serial }}" disabled>
+				</div>
+			
+			
 				<div class="mb-3">
 				  <label for="formFile" class="form-label">Logo </label>
 				  <form wire:submit="save">
