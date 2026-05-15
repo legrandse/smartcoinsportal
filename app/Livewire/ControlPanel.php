@@ -327,8 +327,23 @@ class ControlPanel extends Component
 	
     public function render()
     {
-    	
-    	
-        return view('livewire.control-panel');
+	 /*   try {
+	            // On tente d'appeler l'URL avec un timeout court (ex: 2 secondes)
+	            // pour ne pas bloquer le chargement de la page inutilement
+	            $response = Http::timeout(10)->get($this->ngrok);
+				//dd($response);
+	            if ($response->failed()) {
+	                //return view('livewire.device-offline');
+	                abort(404, "Le périphérique ne répond pas.");
+	            }
+
+	            return view('livewire.control-panel');
+
+	        } catch (\Exception $e) {
+	            // En cas de timeout ou de problème DNS, on bascule sur la vue d'erreur
+	            //return view('livewire.device-offline');
+	            abort(404);
+	        }*/
+	        return view('livewire.control-panel');
     }
 }
