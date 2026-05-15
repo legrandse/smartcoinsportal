@@ -28,7 +28,7 @@ Route::post('/login', function (Request $request) {
     }
 
     // 4. Créer le token Sanctum
-    $token = $user->createToken($request->device_name)->plainTextToken;
+    $token = $user->createToken($request->email)->plainTextToken;
 
     // 5. Renvoyer le token au device
     return ['token' => $token];
