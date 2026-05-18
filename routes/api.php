@@ -36,11 +36,19 @@ Route::post('/login', function (Request $request) {
 	    })
 	    ->exists();
 
-	if (! $deviceExistsForUser) {
+	/*if (! $deviceExistsForUser) {
 	    return response()->json([
 	        'message' => 'Cet appareil n\'est pas associé à votre compte.'
 	    ], 403); // 403 Forbidden : Authentifié, mais pas le droit d'accéder à ce device
+	}*/
+	if (! $deviceExistsForUser) {
+	    return response()->json([
+	        'status' => 'error',
+	        'message' => 'Cet appareil n\'est pas associé à votre compte.'
+	    ], 200); // On force un code 200 pour que le boîtier lise le JSON
 	}
+	
+	
 
 	// 5. Créer le token Sanctum 
 	// Petite astuce : au lieu de nommer le token avec l'email, on le nomme souvent avec le nom/numéro du device !
