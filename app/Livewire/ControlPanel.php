@@ -62,7 +62,7 @@ class ControlPanel extends Component
 
 	public function mount($device) {
 		
-		$this->apiKey = config('services.notereader.key');
+		$this->apiKey = config('device.key');
 		
 				
 		$this->device = Devices::find($device);

@@ -14,18 +14,23 @@
  <lastopfiles>
   <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\HopperController.php"/>
   <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\PaymentController.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\resources\js\bootstrap.js"/>
-  <file name="C:\laragon\www\smartcoinsportal\app\Events\TransactionsListener.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\routes\channels.php"/>
   <file name="C:\laragon\www\smartcoinsportal\app\Livewire\SalesTable.php"/>
   <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\sales-table.blade.php"/>
   <file name="C:\laragon\www\smartcoinsportal\app\Models\Settings.php"/>
   <file name="C:\laragon\www\smartcoinsportal\app\Models\User.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\config\device.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\config\services.php"/>
-  <file name="C:\laragon\www\smartcoinsportal\config\app.php"/>
   <file name="C:\laragon\www\smartcoinsportal\app\Livewire\ControlPanel.php"/>
-  <lastactivefile name="C:\laragon\www\smartcoinsportal\app\Livewire\ControlPanel.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\livewire\control-panel.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\LinkedDevicesController.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\DevicesController.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\devices\index.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\devices\link\index.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\devices\link\create.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\user\index.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\home.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\resources\views\admin\users\edit.blade.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\routes\api.php"/>
+  <file name="C:\laragon\www\smartcoinsportal\app\Http\Controllers\HomeController.php"/>
+  <lastactivefile name=""/>
  </lastopfiles>
  <todoblock>
   <todofile name="C:\laragon\www\smartcoinsportal\node_modules\debug\src\browser.js">
@@ -86,5 +91,5 @@
   </todofile>
  </todoblock>
  <dbgurls/>
- <lasttime value="1778225369"/>
+ <lasttime value="1779114064"/>
 </project>
