@@ -15,7 +15,7 @@
 </treenode>
 <treenode node="Component;PHP:NameSpace Use;4055103927;f3;4;22;4;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kLivewire\Component;;l;;n">
 </treenode>
-<treenode node="Devices;PHP:NameSpace Use;2534607630;f3;7;22;7;;1314225942;f3;6;22;6;;4055103927;f3;17;22;17;;44818484;f3;6;22;6;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Models\Devices;;l;;n">
+<treenode node="Devices;PHP:NameSpace Use;2534607630;f3;7;22;7;;4055103927;f3;17;22;17;;44818484;f3;6;22;6;;1314225942;f3;6;22;6;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Models\Devices;;l;;n">
 </treenode>
 <treenode node="DevicesController;PHP:NameSpace Use;3458261014;f3;9;42;9;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Http\Controllers\DevicesController;;l;;n">
 </treenode>
@@ -35,7 +35,7 @@
 </treenode>
 <treenode node="InteractsWithSockets;PHP:NameSpace Use;1944983255;f3;5;48;5;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kIlluminate\Broadcasting\InteractsWithSockets;;l;;n">
 </treenode>
-<treenode node="LinkedDevices;PHP:NameSpace Use;2534607630;f3;5;28;5;;1314225942;f3;7;28;7;;4055103927;f3;20;28;20;;44818484;f3;5;28;5;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Models\LinkedDevices;;l;;n">
+<treenode node="LinkedDevices;PHP:NameSpace Use;2534607630;f3;5;28;5;;4055103927;f3;20;28;20;;44818484;f3;5;28;5;;1314225942;f3;7;28;7;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Models\LinkedDevices;;l;;n">
 </treenode>
 <treenode node="LinkedDevicesController;PHP:NameSpace Use;3458261014;f3;10;48;10;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Http\Controllers\LinkedDevicesController;;l;;n">
 </treenode>
@@ -77,21 +77,17 @@
 </treenode>
 <treenode node="Carbon;PHP:NameSpace Use;3000540033;f3;9;17;9;;3539069361;f3;11;17;11;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kCarbon\Carbon;;l;;n">
 </treenode>
-<treenode node="Component;PHP:NameSpace Use;3199954209;f3;4;22;4;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kLivewire\Component;;l;;n">
-</treenode>
 <treenode node="ConsoleKernel;PHP:NameSpace Use;3539069361;f3;5;57;5;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kIlluminate\Foundation\Console\Kernel;;l;;n">
 </treenode>
 <treenode node="Crypt;PHP:NameSpace Use;3000540033;f3;12;36;12;;3539069361;f3;12;36;12;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kIlluminate\Support\Facades\Crypt;;l;;n">
 </treenode>
 <treenode node="DB;PHP:NameSpace Use;3000540033;f3;13;6;13;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kDB;;l;;n">
 </treenode>
-<treenode node="Event;PHP:NameSpace Use;3000540033;f3;6;20;6;;3539069361;f3;8;20;8;;3199954209;f3;8;20;8;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Models\Event;;l;;n">
+<treenode node="Event;PHP:NameSpace Use;3000540033;f3;6;20;6;;3539069361;f3;8;20;8;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Models\Event;;l;;n">
 </treenode>
 <treenode node="MissingShiftReminder;PHP:NameSpace Use;3000540033;f3;11;33;11;;3539069361;f3;7;33;7;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Jobs\MissingShiftReminder;;l;;n">
 </treenode>
 <treenode node="Request;PHP:NameSpace Use;3000540033;f3;4;27;4;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kIlluminate\Http\Request;;l;;n">
-</treenode>
-<treenode node="Rule;PHP:NameSpace Use;3199954209;f3;6;28;6;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kLivewire\Attributes\Rule;;l;;n">
 </treenode>
 <treenode node="Schedule;PHP:NameSpace Use;3539069361;f3;4;42;4;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kIlluminate\Console\Scheduling\Schedule;;l;;n">
 </treenode>
@@ -99,19 +95,13 @@
 </treenode>
 <treenode node="ServiceProvider;PHP:NameSpace Use;444031272;f3;4;83;4;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kIlluminate\Foundation\Support\Providers\EventServiceProvider;;l;;n">
 </treenode>
-<treenode node="Settings;PHP:NameSpace Use;3199954209;f3;7;23;7;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Models\Settings;;l;;n">
-</treenode>
-<treenode node="Shift;PHP:NameSpace Use;3000540033;f3;8;20;8;;3539069361;f3;10;20;10;;3199954209;f3;10;20;10;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Models\Shift;;l;;n">
-</treenode>
-<treenode node="Task;PHP:NameSpace Use;3199954209;f3;9;19;9;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Models\Task;;l;;n">
+<treenode node="Shift;PHP:NameSpace Use;3000540033;f3;8;20;8;;3539069361;f3;10;20;10;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Models\Shift;;l;;n">
 </treenode>
 <treenode node="TaskReminder;PHP:NameSpace Use;3000540033;f3;10;25;10;;3539069361;f3;6;25;6;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Jobs\TaskReminder;;l;;n">
 </treenode>
 <treenode node="User;PHP:NameSpace Use;3000540033;f3;7;19;7;;3539069361;f3;9;19;9;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kApp\Models\User;;l;;n">
 </treenode>
 <treenode node="Verified;PHP:NameSpace Use;444031272;f3;5;35;5;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kIlluminate\Auth\Events\Verified;;l;;n">
-</treenode>
-<treenode node="WithFileUploads;PHP:NameSpace Use;3199954209;f3;5;28;5;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kLivewire\WithFileUploads;;l;;n">
 </treenode>
 <treenode node="Log;PHP:NameSpace Use;2294438828;f3;11;34;11;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;kIlluminate\Support\Facades\Log;;l;;n">
 </treenode>
@@ -8137,7 +8127,7 @@
 </treenode>
 <treenode node="succesNM.php;PHP:PHP Include;1280367902;f17;90;29;90;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="App;PHP:NameSpace Name;3950982475;f9;2;0;41;;4035146081;f9;2;0;41;;2293607240;f9;2;0;41;;132261454;f9;2;0;27;;3415335262;f9;2;0;36;;3221719859;f9;2;21;2;;444031272;f9;2;1;26;;3000540033;f9;2;0;116;;3539069361;f9;2;1;112;;3199954209;f9;2;0;141;;1899261116;f9;2;0;106;;1708496289;f9;2;0;145;;1068009359;f9;2;0;21;;1832510394;f9;2;0;28;;1944983255;f9;2;0;42;;3005482991;f9;2;0;26;;2540899923;f9;2;0;30;;1159748799;f9;2;1;52;;635410787;f9;2;0;75;;3463455270;f9;2;0;17;;989043518;f9;2;0;47;;2294438828;f9;2;0;84;;255359576;f9;2;0;139;;1056531088;f9;2;1;18;;114029996;f9;2;0;64;;4055103927;f9;2;0;349;;44818484;f9;2;0;112;;713556957;f9;2;0;61;;1153359257;f9;2;0;39;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="App;PHP:NameSpace Name;3950982475;f9;2;0;41;;4035146081;f9;2;0;41;;2293607240;f9;2;0;41;;132261454;f9;2;0;27;;3415335262;f9;2;0;36;;3221719859;f9;2;21;2;;444031272;f9;2;1;26;;3000540033;f9;2;0;116;;3539069361;f9;2;1;112;;1899261116;f9;2;0;106;;1708496289;f9;2;0;145;;1068009359;f9;2;0;21;;1832510394;f9;2;0;28;;1944983255;f9;2;0;42;;3005482991;f9;2;0;26;;2540899923;f9;2;0;30;;1159748799;f9;2;1;52;;635410787;f9;2;0;75;;3463455270;f9;2;0;17;;989043518;f9;2;0;47;;2294438828;f9;2;0;84;;255359576;f9;2;0;139;;1056531088;f9;2;1;18;;114029996;f9;2;0;64;;4055103927;f9;2;0;349;;44818484;f9;2;0;112;;713556957;f9;2;0;61;;1153359257;f9;2;0;39;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 <treenode node="Console;PHP:NameSpace Name;2048628871;f9;2;0;29;;3539069361;f9;2;1;112;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 <treenode node="Kernel;PHP:Class Name;2048628871;f0;8;1;28;;3539069361;f0;14;1;112;;;;vpos;;v;;aConsoleKernel;;c;;r;;d0,9;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 <treenode node="commands;PHP:Function Name;2048628871;f14;22;5;27;;3539069361;f14;106;5;111;;;;vpos;;v;;a;;r&#10;&lt;b&gt;Definition&lt;/b&gt;&#10;    commands(): void&#10;&#10;&lt;b&gt;Description&lt;/b&gt;&#10;    Register the commands for the application.;;d4,23;;b2,0;;m0;;e0;;i0;;o;;k;;l;;n">
@@ -8298,7 +8288,7 @@
 </treenode>
 </treenode>
 </treenode>
-<treenode node="Livewire;PHP:NameSpace Name;1763752052;f9;2;0;36;;1763752052;f9;2;0;36;;3309957997;f9;2;0;76;;3415335262;f9;2;0;36;;3199954209;f9;2;0;141;;1899261116;f9;2;0;106;;1708496289;f9;2;0;145;;255359576;f9;2;0;139;;4055103927;f9;2;0;349;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="Livewire;PHP:NameSpace Name;1763752052;f9;2;0;36;;1763752052;f9;2;0;36;;3309957997;f9;2;0;76;;3415335262;f9;2;0;36;;1899261116;f9;2;0;106;;1708496289;f9;2;0;145;;255359576;f9;2;0;139;;4055103927;f9;2;0;349;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 <treenode node="Charts;PHP:Class Name;3309957997;f0;9;1;75;;1708496289;f0;8;1;142;;;;vpos;;v;;aComponent;;c;;r;;d0,9;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 <treenode node="loadData;PHP:Function Name;1708496289;f12;32;5;136;;;;vpos;;v;;a;;r;;d4,33;;b3,0;;m0;;e0;;i0;;o;;k;;ldevice;;p;;x;;n">
 </treenode>
@@ -8319,26 +8309,18 @@
 <treenode node="$user;PHP:Var Name;1708496289;f11;14;16;14;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 </treenode>
-<treenode node="ControlPanel;PHP:Class Name;3199954209;f0;12;1;140;;4055103927;f0;22;1;348;;;;vpos;;v;;aComponent;;cWithFileUploads;;c;;r;;d0,23;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
-<treenode node="archiveButton;PHP:Function Name;3199954209;f8;35;2;41;;;;vpos;;v;;a;;r;;d1,36;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
-</treenode>
+<treenode node="ControlPanel;PHP:Class Name;4055103927;f0;22;1;348;;;;vpos;;v;;aComponent;;cWithFileUploads;;c;;r;;d0,23;;b0,0;;m0;;e0;;i0;;o;;k;;l;;n">
 <treenode node="collectHopper;PHP:Function Name;4055103927;f8;215;2;232;;;;vpos;;v;;a;;r;;d1,216;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="collectNotereader;PHP:Function Name;4055103927;f8;262;2;290;;;;vpos;;v;;a;;r;;d1,263;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="duplicateEvent;PHP:Function Name;3199954209;f8;75;2;120;;;;vpos;;v;;a;;r;;d1,76;;b1,0;;m0;;e0;;i0;;o;;k;;leventId;;p;;x;;n">
+<treenode node="mount;PHP:Function Name;4055103927;f8;62;2;94;;;;vpos;;v;;a;;r;;d32,62;;b1,0;;m0;;e0;;i0;;o;;k;;ldevice;;p;;x;;n">
 </treenode>
-<treenode node="mount;PHP:Function Name;3199954209;f8;26;2;31;;4055103927;f8;62;2;94;;;;vpos;;v;;a;;r;;d32,62;;b1,0;;m0;;e0;;i0;;o;;k;;ldevice;;p;;x;;n">
-</treenode>
-<treenode node="render;PHP:Function Name;3199954209;f11;134;5;139;;4055103927;f11;327;5;347;;;;vpos;;v;;a;;r;;d4,328;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
-</treenode>
-<treenode node="resetEvent;PHP:Function Name;3199954209;f8;63;2;73;;;;vpos;;v;;a;;r;;d1,64;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="render;PHP:Function Name;4055103927;f11;327;5;347;;;;vpos;;v;;a;;r;;d4,328;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="resetNotereader;PHP:Function Name;4055103927;f8;198;2;213;;;;vpos;;v;;a;;r;;d1,199;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="save;PHP:Function Name;3199954209;f8;125;5;131;;4055103927;f8;177;5;181;;;;vpos;;v;;a;;r;;d4,178;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
-</treenode>
-<treenode node="saveArchiveValue;PHP:Function Name;3199954209;f8;51;2;61;;;;vpos;;v;;a;;r;;d36,51;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="save;PHP:Function Name;4055103927;f8;177;5;181;;;;vpos;;v;;a;;r;;d4,178;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="shutdownRaspberry;PHP:Function Name;4055103927;f8;184;2;196;;;;vpos;;v;;a;;r;;d1,185;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
@@ -8350,13 +8332,9 @@
 </treenode>
 <treenode node="updated;PHP:Function Name;4055103927;f8;143;2;169;;;;vpos;;v;;a;;r;;d1,144;;b1,0;;m0;;e0;;i0;;o;;k;;lname;;pvalue;;p;;x;;x;;n">
 </treenode>
-<treenode node="validateData;PHP:Function Name;3199954209;f8;43;9;48;;4055103927;f8;100;9;108;;;;vpos;;v;;a;;r;;d31,100;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="validateData;PHP:Function Name;4055103927;f8;100;9;108;;;;vpos;;v;;a;;r;;d31,100;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="$apiKey;PHP:Var Name;4055103927;f8;54;15;54;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
-</treenode>
-<treenode node="$archiveToggle;PHP:Var Name;3199954209;f8;19;22;19;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
-</treenode>
-<treenode node="$archiveValue;PHP:Var Name;3199954209;f8;20;21;20;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="$cashToggle;PHP:Var Name;4055103927;f8;35;19;35;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
@@ -8367,10 +8345,6 @@
 <treenode node="$device;PHP:Var Name;4055103927;f8;26;15;26;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="$deviceUrl;PHP:Var Name;4055103927;f8;49;18;49;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
-</treenode>
-<treenode node="$event_id;PHP:Var Name;3199954209;f8;23;17;23;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
-</treenode>
-<treenode node="$events;PHP:Var Name;3199954209;f8;22;15;22;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="$hopperLevels;PHP:Var Name;4055103927;f11;60;24;60;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
@@ -8388,7 +8362,7 @@
 </treenode>
 <treenode node="$paypalToggle;PHP:Var Name;4055103927;f8;34;21;34;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
-<treenode node="$photo;PHP:Var Name;3199954209;f11;17;17;17;;4055103927;f11;30;17;30;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
+<treenode node="$photo;PHP:Var Name;4055103927;f11;30;17;30;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>
 <treenode node="$quantity;PHP:Var Name;4055103927;f11;57;20;57;;;;vpos;;v;;a;;r;;d-1,-1;;b1,0;;m0;;e0;;i0;;o;;k;;l;;n">
 </treenode>

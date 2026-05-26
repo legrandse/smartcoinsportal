@@ -51,6 +51,8 @@ class ControlPanel extends Component
 	public $noteReaderUrl = 'https://smartcoinsnotereader.ngrok.app';
 	public $collectToggle = false;
 	public $stackToggle = false;
+	public $collectHopperToggle = false;
+	public $stackHopperToggle = false;
 	
 	public $apiKey;
 
@@ -143,7 +145,17 @@ class ControlPanel extends Component
 	#[On('updateInput')] 
 	public function updated($name, $value) 
 	{
-	    $settings = Settings::where('device',$this->device->serial)
+	    // 1. Liste des propriétés locales qu'on ne veut PAS envoyer à l'API de configuration
+	    $localToggles = ['collectHopperToggle', 'collectToggle', 'stackToggle'];
+
+	    if (in_array($name, $localToggles)) {
+	        // On arrête la fonction ici pour ces propriétés, Livewire aura quand même
+	        // mis à jour la variable PHP, ce qui est parfait pour vos méthodes d'action.
+	        return;
+	    }
+
+	    // 2. Votre logique existante reste inchangée pour le reste (magasin, parity, ngrok...)
+	    $settings = Settings::where('device', $this->device->serial)
 	                        ->where('name', $name)
 	                        ->first();
 
@@ -199,7 +211,7 @@ class ControlPanel extends Component
 	public function resetNotereader()
 	{
 		//dd('hello');
-		$baseUrl = $this->noteReaderUrl . '/reset';
+		$baseUrl = $this->ngrok . '/api/reset';
 		try {
 			$response = Http::withToken($this->apiKey)->post($baseUrl);
 		} catch (\Exception $e) {
@@ -215,17 +227,21 @@ class ControlPanel extends Component
 	
 	public function collectHopper()
 	{
-		//dd('hello');
-		$baseUrl = $this->noteReaderUrl . '/collectHopper';
-		try {
-            
-			$response = Http::withToken($this->apiKey)->post($baseUrl);
-			
-		} catch (\Exception $e) {
-			\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
-			return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
-	    	}
-		session()->flash('success', 'successfully updated.');
+		
+		$baseUrl = $this->ngrok . '/api/collect-hopper';
+		if($this->collectHopperToggle){
+		
+			try {
+	            
+				$response = Http::withToken($this->apiKey)->post($baseUrl);
+				session()->flash('success', 'successfully updated.');
+				
+			} catch (\Exception $e) {
+				\Log::error("Erreur lors de la commande collecte du lecteur de billets : " . $e->getMessage());
+				$this->collectHopperToggle = false;
+				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
+		    	}
+		}
 
 
 			//$this->redirect('/settings'); 
@@ -235,27 +251,30 @@ class ControlPanel extends Component
 	
 	public function stackHopper()
     {
-        $this->validate([
+       $this->validate([
             'quantity' => 'required|integer|min:1',
             'denomination' => 'required|numeric|min:0.1',
         ]);
 
+		if($this->stackHopperToggle){
+	        try {
+	            $response = Http::withToken($this->apiKey)->post($this->ngrok . '/api/stack-hopper', [
+	                'amount' => $this->quantity,
+	                'denomination' => $this->denomination,
+	            ]);
 
-        try {
-            $response = Http::withToken($this->apiKey)->post($this->noteReaderUrl . '/hopperStack', [
-                'amount' => $this->quantity,
-                'denomination' => $this->denomination,
-            ]);
+	            if ($response->failed()) {
+	                throw new \Exception("Erreur API : " . $response->body());
+	            }
 
-            if ($response->failed()) {
-                throw new \Exception("Erreur API : " . $response->body());
-            }
-
-            session()->flash('success', 'Requête envoyée avec succès !');
-        } catch (\Exception $e) {
-            Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
-            session()->flash('error', 'Une erreur est survenue : ' . $e->getMessage());
-        }
+	            session()->flash('success', 'Requête envoyée avec succès !');
+	        } catch (\Exception $e) {
+	            Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
+	            session()->flash('error', 'Une erreur est survenue : ' . $e->getMessage());
+	        }
+	    
+		}    
+	        
     }
 	
 	
@@ -268,15 +287,16 @@ class ControlPanel extends Component
 		if($this->collectToggle){
 			try {
 	            
-				$response = Http::withToken($this->apiKey)->post($this->noteReaderUrl .'/collect');
-				
+				$response = Http::withToken($this->apiKey)->post($this->ngrok .'/api/collect-notereader');
+				session()->flash('success', 'successfully updated.');
+			
 			} catch (\Exception $e) {
-				\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
+				\Log::error("Erreur lors de la fonction collect du lecteur de billets : " . $e->getMessage());
 				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
 		    	}
 					
 		}
-		else {
+		/*else {
 			try {
 				$response = Http::withToken($this->apiKey)->post($this->noteReaderUrl . '/disable');
 				
@@ -285,9 +305,9 @@ class ControlPanel extends Component
 				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
 		    	}
 			
-		}
+		}*/
 		
-		session()->flash('success', 'successfully updated.');
+		
 	}
 
 
@@ -299,29 +319,17 @@ class ControlPanel extends Component
 		//dd($this->stackToggle);
 		if($this->stackToggle){
 			try {
-				$response = Http::withToken($this->apiKey)->post($this->noteReaderUrl . '/enable', [
-					
-					'amount' => 0,
-					'stacking' => true
-				]);
+				$response = Http::withToken($this->apiKey)->post($this->ngrok . '/api/stack-note');
+				session()->flash('success', 'successfully updated.');
 				
 			} catch (\Exception $e) {
 				\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
 				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
 		    	}
-		}
-		else {
-			try {
-				$response = Http::withToken($this->apiKey)->post($this->noteReaderUrl . '/disable');
-				
-			} catch (\Exception $e) {
-				\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
-				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
-		    	}
-			
 		}
 		
-		session()->flash('success', 'successfully updated.');
+		
+		
 	}
 
 	
