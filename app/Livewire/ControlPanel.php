@@ -269,6 +269,7 @@ class ControlPanel extends Component
 
 	            session()->flash('success', 'Requête envoyée avec succès !');
 	        } catch (\Exception $e) {
+				Log::error("Contenu de l'erreur API : " . $response->body());
 	            Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
 	            session()->flash('error', 'Une erreur est survenue : ' . $e->getMessage());
 	        }
