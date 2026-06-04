@@ -196,7 +196,7 @@ class ControlPanel extends Component
     
 	public function shutdownRaspberry()
 	{
-		Http::post($this->ngrok . '/shutdown', [						   
+		Http::post($this->ngrok . '/api/shutdown', [						   
 						
 						'command' => 'shutdown',					
 						
