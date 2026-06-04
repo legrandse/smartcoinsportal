@@ -259,7 +259,7 @@ class ControlPanel extends Component
 		if($this->stackHopperToggle){
 	        try {
 	            $response = Http::withToken($this->apiKey)->post($this->ngrok . '/api/stack-hopper', [
-	                'amount' => $this->quantity,
+	                'quantity' => $this->quantity,
 	                'denomination' => $this->denomination,
 	            ]);
 
