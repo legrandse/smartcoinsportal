@@ -256,7 +256,7 @@ class ControlPanel extends Component
             'denomination' => 'required|numeric|min:0.1',
         ]);
 
-		if($this->stackHopperToggle){
+		
 	        try {
 	            $response = Http::withToken($this->apiKey)->post($this->ngrok . '/api/stack-hopper', [
 	                'quantity' => $this->quantity,
@@ -273,7 +273,7 @@ class ControlPanel extends Component
 	            session()->flash('error', 'Une erreur est survenue : ' . $e->getMessage());
 	        }
 	    
-		}    
+		  
 	        
     }
 	
