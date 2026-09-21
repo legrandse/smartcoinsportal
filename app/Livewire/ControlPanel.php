@@ -333,6 +333,34 @@ class ControlPanel extends Component
 		
 	}
 
+	public function stackNote()
+	{
+		if ($this->stackToggle) {
+        $this->collectToggle = false;
+    }
+		if($this->stackToggle){
+			try {
+				$response = Http::withToken($this->apiKey)->post($this->ngrok . '/api/stack-note');
+				
+			} catch (\Exception $e) {
+				\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
+				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
+		    	}
+		}
+		else {
+			try {
+				$response = Http::withToken($this->apiKey)->post($this->noteReaderUrl . '/disable');
+				
+			} catch (\Exception $e) {
+				\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
+				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
+		    	}
+			
+		}
+		
+		session()->flash('success', 'successfully updated.');
+	}
+
 	
     public function render()
     {

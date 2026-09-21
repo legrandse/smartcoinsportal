@@ -93,11 +93,11 @@
 
         <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
           <div class="col-xl-6 col-lg-8">
-            <h2>Modernes...  Connectés...  Efficaces<span>!</span></h2>
-            <p>Les distributeurs de jetons nouvelle génération</p>
+            <h2>Modernes...  Connectés...  Smart <span>!</span></h2>
+            <p></p>
           </div>
         </div>
-
+<!--
         <div class="row gy-4 mt-5 justify-content-center" data-aos="fade-up" data-aos-delay="200">
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
@@ -130,7 +130,7 @@
             </div>
           </div>
         </div>
-
+-->
       </div>
 
     </section><!-- /Hero Section -->
@@ -142,7 +142,7 @@
 
         <div class="row gy-4">
           <div class="col-lg-6 order-1 order-lg-2">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="assets/img/caisse.png" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 order-2 order-lg-1 content">
             <h3>Evitez les pertes de temps avec nos solutions innovantes !</h3>
