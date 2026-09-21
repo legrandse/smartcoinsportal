@@ -23,5 +23,6 @@ class HopperLevel extends Model
         'value_cent',
         'value_eur',
         'country_code',
+        'device',
     ];
 }
