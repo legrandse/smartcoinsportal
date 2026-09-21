@@ -312,7 +312,7 @@ class ControlPanel extends Component
 	}
 
 
-	public function stackNote()
+/*	public function stackNote()
 	{
 		
 		$this->collectToggle = false;
@@ -331,7 +331,7 @@ class ControlPanel extends Component
 		
 		
 		
-	}
+	}*/
 
 	public function stackNote()
 	{
