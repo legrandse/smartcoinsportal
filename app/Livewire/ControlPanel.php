@@ -250,33 +250,39 @@ class ControlPanel extends Component
 	
 	
 	public function stackHopper()
-    {
-       $this->validate([
-            'quantity' => 'required|integer|min:1',
-            'denomination' => 'required|numeric|min:0.1',
-        ]);
+	{
+		$this->validate([
+			'quantity' => 'required|integer|min:1',
+			'denomination' => 'required|numeric|min:0.1',
+		]);
 
-		
-	        try {
-	            $response = Http::withToken($this->apiKey)->post($this->ngrok . '/api/stack-hopper', [
-	                'quantity' => $this->quantity,
-	                'denomination' => $this->denomination,
-	            ]);
+		try {
+			$response = Http::withToken($this->apiKey)->post(
+				$this->ngrok . '/api/stack-hopper',
+				[
+					'quantity' => $this->quantity,
+					'denomination' => $this->denomination,
+				]
+			);
 
-	            if ($response->failed()) {
-	                throw new \Exception("Erreur API : " . $response->body());
-	            }
+			if ($response->failed()) {
+				throw new \Exception(
+					"Erreur API : " . $response->body()
+				);
+			}
 
-	            session()->flash('success', 'Requête envoyée avec succès !');
-	        } catch (\Exception $e) {
-				Log::error("Contenu de l'erreur API : " . $response->body());
-	            Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
-	            session()->flash('error', 'Une erreur est survenue : ' . $e->getMessage());
-	        }
-	    
-		  
-	        
-    }
+			session()->flash('success', 'Requête envoyée avec succès !');
+
+		} catch (\Exception $e) {
+
+			Log::error("Erreur lors de l'appel stack-hopper : " . $e->getMessage());
+
+			session()->flash(
+				'error',
+				'Une erreur est survenue : ' . $e->getMessage()
+			);
+		}
+	}
 	
 	
 
