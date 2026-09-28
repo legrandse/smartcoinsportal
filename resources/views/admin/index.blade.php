@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+{{--
 			 <!-- Device Select -->
 			 <livewire:device-select  /> 
 			 
@@ -30,6 +30,10 @@
             
             
             <!-- Recent Sales End -->
+--}}
+
+            <livewire:dashboard /> 
+
 
             {{--
             <!-- Widgets Start -->
