@@ -504,6 +504,40 @@ class Dashboard extends Component
 
 
     /**
+     * Concerne le refresh via reverb du dashboard
+     */
+
+    public function refreshTransactions()
+	{
+	    $this->loadRevenues();
+        $this->loadData();
+        $this->loadTransactions();
+	    
+	}
+	
+	
+	//permet de rafraichir la table avec un private channel
+	public function getListeners()
+	{
+	    $user = auth()->user();
+	    $listeners = [];
+
+	    // On parcourt les appareils liés pour créer un écouteur par canal privé
+	    foreach ($user->linkedDevices as $linked) {
+	        $serial = $linked->device->serial;
+	        
+	        // Syntaxe : echo-private:{canal},{événement}
+	        // Sans broadcastAs, l'événement est le namespace complet précédé d'un point
+	        $listeners["echo-private:transaction.{$serial},.App\Events\TransactionsListener"] = 'refreshTransactions';
+	    }
+
+	    return $listeners;
+	}
+
+
+
+
+    /**
      * Render
      */
     public function render()
