@@ -485,7 +485,7 @@ class Dashboard extends Component
         $this->selectAll = false;
 
         // Recharger la liste
-        $this->loadTransactions();
+        $this->loadRevenues();
         $this->loadData();
         $this->loadTransactions();
 
