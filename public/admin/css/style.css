@@ -300,3 +300,12 @@ a:hover {
     background: var(--dark);
     border-color: var(--primary);
 }
+
+.form-switch-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.form-switch label {
+ margin-right: 50px !important;
+}

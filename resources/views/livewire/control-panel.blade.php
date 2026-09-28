@@ -5,7 +5,7 @@
     </div>
 @endif
 	<div class="col-sm-12">		
-		<div class="card bg-secondary rounded p-4 mt-4">
+		<div class="card bg-secondary rounded p-2 mt-2">
 			<div class="card-header ">
 			<h6 class="mb-4">Control panel for {{ $linkedDevice->ref }}</h6>
 			</div>
@@ -135,21 +135,25 @@
 				<label class="form-check-label" for="stripeSwitch">Collect Hopper</label>
 			</div>
 
-			<div class="d-flex flex-column align-items-end mb-3">
+			<div class="w-100 d-flex flex-column align-items-end mb-3">
 				{{--<button type="button" class="btn btn-primary mb-2" wire:click="resetNotereader">Reset</button>--}}
 				
-				<div class="form-check form-switch mb-3">
-					<input class="form-check-input" type="checkbox" role="switch"
-						wire:model="collectToggle"
-						wire:change="collectNotereader">
-					<label class="form-check-label" for="stripeSwitch">Collect Notereader</label>
+				<div class="w-100 d-flex justify-content-end mb-2">
+					<div class="form-check form-switch form-switch-reverse">
+						<input class="form-check-input" type="checkbox" role="switch"
+							wire:model="collectToggle"
+							wire:change="collectNotereader">
+						<label class="form-check-label" for="stripeSwitch">Collect Notereader</label>
+					</div>
 				</div>
 				
-				<div class="form-check form-switch mb-3">
-					<input class="form-check-input" type="checkbox" role="switch"
-						wire:model="stackToggle"
-						wire:change="stackNote">
-					<label class="form-check-label" for="stripeSwitch">Stack 10€ Notes</label>
+				<div class="w-100 d-flex justify-content-end mb-2">
+					<div class="form-check form-switch form-switch-reverse">
+						<input class="form-check-input" type="checkbox" role="switch"
+							wire:model="stackToggle"
+							wire:change="stackNote">
+						<label class="form-check-label" for="stripeSwitch">Stack Notes</label>
+					</div>
 				</div>
 			</div>
 
