@@ -486,6 +486,8 @@ class Dashboard extends Component
 
         // Recharger la liste
         $this->loadTransactions();
+        $this->loadData();
+        $this->loadTransactions();
 
         // Message toast Livewire
         $this->dispatch('deleted');
