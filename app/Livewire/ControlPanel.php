@@ -207,6 +207,23 @@ class ControlPanel extends Component
 		//$result = $service->run('/home/pi/rpiWebServer/shutdown.py');
 		//\Python::run('/home/pi/rpiWebServer/shutdown.py');
 	}
+
+	public function rebootRaspberry()
+	{
+		Http::post($this->ngrok . '/api/reboot', [						   
+						
+						'command' => 'reboot',					
+						
+							
+						]);
+		//$service = new LaravelPython();
+		//dd($service);
+		//$result = $service->run('/home/pi/rpiWebServer/shutdown.py');
+		//\Python::run('/home/pi/rpiWebServer/shutdown.py');
+	}
+
+
+
 	
 	public function resetNotereader()
 	{

@@ -135,29 +135,27 @@
 				<label class="form-check-label" for="stripeSwitch">Collect Hopper</label>
 			</div>
 
-			<div class="d-flex gap-2 mb-3">
-			    {{--<button type="button" class="btn btn-primary" wire:click="resetNotereader">Reset</button>--}}
-			    
-			    
-			    
-			    <div class="form-check form-switch mb-3">
+			<div class="d-flex flex-column align-items-end mb-3">
+				{{--<button type="button" class="btn btn-primary mb-2" wire:click="resetNotereader">Reset</button>--}}
+				
+				<div class="form-check form-switch mb-3">
 					<input class="form-check-input" type="checkbox" role="switch"
-						
 						wire:model="collectToggle"
-        				wire:change="collectNotereader">
-						
+						wire:change="collectNotereader">
 					<label class="form-check-label" for="stripeSwitch">Collect Notereader</label>
 				</div>
-			    
-			    <div class="form-check form-switch mb-3">
+				
+				<div class="form-check form-switch mb-3">
 					<input class="form-check-input" type="checkbox" role="switch"
-						
 						wire:model="stackToggle"
-       	 				wire:change="stackNote">
-						
+						wire:change="stackNote">
 					<label class="form-check-label" for="stripeSwitch">Stack 10€ Notes</label>
 				</div>
-			   
+			</div>
+
+			<div class="mb-3" >
+				<button type="button" class="btn btn-primary float-start" wire:click="rebootRaspberry" wire:confirm="Are you sure you want to reboot?"><i class="fas fa-sync" style="color: #f9a907;"></i></button>
+				<label for="formFile" class="form-label float-start mx-3">Reboot Distributor </label>
 			</div>
 			
 			<div class="mb-3" >
