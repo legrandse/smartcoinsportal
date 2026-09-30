@@ -10,18 +10,15 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Transactions;
-use App\Models\User;
 
-
-class TransactionsListener implements ShouldBroadcastNow
+class HopperLevelsUpdated implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public function __construct(public Transactions $transaction)
+    public function __construct()
     {
         //
     }
@@ -34,9 +31,8 @@ class TransactionsListener implements ShouldBroadcastNow
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('transaction.'.$this->transaction->device), // example: 'transaction.YFKZGVDERzefz'
-            //new Channel('transaction.'.$this->transaction->device),
-            //new Channel('transaction'),
+            //new PrivateChannel('control-panel'),
+            new Channel('hopperLevels'),
         ];
     }
 }

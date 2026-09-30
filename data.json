@@ -1,0 +1,7 @@
+{
+  "status": {
+    "message": "Stored levels: {\"1\": {\"denomination_level\": 5, \"value\": 50, \"country_code\": \"EUR\"},
+    \"2\": {\"denomination_level\": 20, \"value\": 100, \"country_code\": \"EUR\"}}",
+    "value": "info"
+  }
+}

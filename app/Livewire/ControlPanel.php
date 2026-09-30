@@ -14,6 +14,8 @@ use App\Jobs\SyncSettingsJob;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+
 
 use App\Models\Devices;
 use App\Models\Settings;
@@ -47,8 +49,8 @@ class ControlPanel extends Component
 	#[Validate('required')]
 	public $ngrok;
 	
-	public $deviceUrl = 'https://smartcoinspython.ngrok.app';
-	public $noteReaderUrl = 'https://smartcoinsnotereader.ngrok.app';
+	//public $deviceUrl = 'https://smartcoinspython.ngrok.app';
+	//public $noteReaderUrl = 'https://smartcoinsnotereader.ngrok.app';
 	public $collectToggle = false;
 	public $stackToggle = false;
 	public $collectHopperToggle = false;
@@ -89,7 +91,7 @@ class ControlPanel extends Component
         $this->tokenArray = Settings::where('device',$this->device->serial)
         							->where('name', 'tokenArray')->value('value');
         
-        $this->hopperLevels = HopperLevel::orderBy('value_eur')->get();
+        $this->loadHopperLevels();
         
         $this->ngrok = Settings::where('device',$this->device->serial)
         						->where('name', 'ngrok')->value('value');
@@ -181,8 +183,14 @@ class ControlPanel extends Component
 	    session()->flash('success', 'successfully updated.');
 	}
 
-	
+	//use in mount() and Echo to live refresh
+	public function loadHopperLevels(){
 
+		$this->hopperLevels = HopperLevel::where('device',$this->device->serial)
+								->orderBy('value_eur')
+								->get();
+
+	}
 	
 	
 	
@@ -200,12 +208,8 @@ class ControlPanel extends Component
 						
 						'command' => 'shutdown',					
 						
-							
 						]);
-		//$service = new LaravelPython();
-		//dd($service);
-		//$result = $service->run('/home/pi/rpiWebServer/shutdown.py');
-		//\Python::run('/home/pi/rpiWebServer/shutdown.py');
+		
 	}
 
 	public function rebootRaspberry()
@@ -214,12 +218,8 @@ class ControlPanel extends Component
 						
 						'command' => 'reboot',					
 						
-							
 						]);
-		//$service = new LaravelPython();
-		//dd($service);
-		//$result = $service->run('/home/pi/rpiWebServer/shutdown.py');
-		//\Python::run('/home/pi/rpiWebServer/shutdown.py');
+		
 	}
 
 
@@ -383,6 +383,38 @@ class ControlPanel extends Component
 		
 		session()->flash('success', 'successfully updated.');
 	}
+
+
+	//refresh hopperLevels select in the view
+	#[On('echo:hopperLevels,HopperLevelsUpdated')]
+	public function refreshHopperLevels()
+	{
+	    $this->loadHopperLevels();
+		
+
+	}
+	
+	
+	//permet de rafraichir la table avec un private channel
+	/*public function getListeners()
+	{
+	    $user = auth()->user();
+	    $listeners = [];
+
+	    // On parcourt les appareils liés pour créer un écouteur par canal privé
+	    foreach ($user->linkedDevices as $linked) {
+	        $serial = $linked->device->serial;
+	        
+	        // Syntaxe : echo-private:{canal},{événement}
+	        // Sans broadcastAs, l'événement est le namespace complet précédé d'un point
+	        $listeners["echo-private:transaction.{$serial},.App\Events\TransactionsListener"] = 'refreshHopperLevels';
+	    }
+
+	    return $listeners;
+	}
+*/
+
+
 
 	
     public function render()
