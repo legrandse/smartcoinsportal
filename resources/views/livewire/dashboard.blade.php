@@ -1,7 +1,7 @@
 <div>
     <div class="container-fluid pt-4 px-4">
-	    <div class="row ">
-	    	<div class="col-sm-12 col-xl-12">
+	    <div class="row">
+	    	<div class="col-sm-12 col-xl-12 mb-3">
 	        	<div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
 					<select class="form-select" wire:model.live="deviceId">
 					  <option disabled value="" >Sélectionner un appareil</option>
@@ -105,7 +105,7 @@
             </div>
 
     
-            <div class="bg-secondary text-center rounded p-4">
+            <div class="bg-secondary text-center rounded p-4 mt-3">
                 <div class="d-flex align-items-center justify-content-between mb-4">
                     <h6 class="mb-0">Recent Sales</h6>
                     <button class="btn btn-danger d-none" id="deleteBtn" wire:click="deleteSelected" wire:confirm="Are you sure you want to delete this transaction?"  @disabled(empty($selected))>Delete Selected</button>

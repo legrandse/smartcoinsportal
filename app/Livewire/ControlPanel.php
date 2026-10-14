@@ -171,7 +171,7 @@ class ControlPanel extends Component
 	        ]);
 	    }
 
-	    Http::post($this->ngrok.'/api/notify-settings-update', [
+	    Http::withToken($this->device->serial)->post($this->ngrok.'/api/notify-settings-update', [
 	        'value' => 'settings',
 	        'data' => [
 	            'device'=> $settings->device,
@@ -204,7 +204,7 @@ class ControlPanel extends Component
     
 	public function shutdownRaspberry()
 	{
-		Http::post($this->ngrok . '/api/shutdown', [						   
+		Http::withToken($this->device->serial)->post($this->ngrok . '/api/shutdown', [						   
 						
 						'command' => 'shutdown',					
 						
@@ -214,7 +214,7 @@ class ControlPanel extends Component
 
 	public function rebootRaspberry()
 	{
-		Http::post($this->ngrok . '/api/reboot', [						   
+		Http::withToken($this->device->serial)->post($this->ngrok . '/api/reboot', [						   
 						
 						'command' => 'reboot',					
 						
@@ -250,7 +250,7 @@ class ControlPanel extends Component
 		
 			try {
 	            
-				$response = Http::withToken($this->apiKey)->post($baseUrl);
+				$response = Http::withToken($this->device->serial)->post($baseUrl);
 				session()->flash('success', 'successfully updated.');
 				
 			} catch (\Exception $e) {
@@ -274,7 +274,7 @@ class ControlPanel extends Component
 		]);
 
 		try {
-			$response = Http::withToken($this->apiKey)->post(
+			$response = Http::withToken($this->device->serial)->post(
 				$this->ngrok . '/api/stack-hopper',
 				[
 					'quantity' => $this->quantity,
@@ -311,7 +311,7 @@ class ControlPanel extends Component
 		if($this->collectToggle){
 			try {
 	            
-				$response = Http::withToken($this->apiKey)->post($this->ngrok .'/api/collect-notereader');
+				$response = Http::withToken($this->device->serial)->post($this->ngrok .'/api/collect-notereader');
 				session()->flash('success', 'successfully updated.');
 			
 			} catch (\Exception $e) {
@@ -363,7 +363,7 @@ class ControlPanel extends Component
     }
 		if($this->stackToggle){
 			try {
-				$response = Http::withToken($this->apiKey)->post($this->ngrok . '/api/stack-note');
+				$response = Http::withToken($this->device->serial)->post($this->ngrok . '/api/stack-note');
 				
 			} catch (\Exception $e) {
 				\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
@@ -372,7 +372,7 @@ class ControlPanel extends Component
 		}
 		else {
 			try {
-				$response = Http::withToken($this->apiKey)->post($this->noteReaderUrl . '/disable');
+				$response = Http::withToken($this->device->serial)->post($this->noteReaderUrl . '/disable');
 				
 			} catch (\Exception $e) {
 				\Log::error("Erreur lors de la vérification du lecteur de billets : " . $e->getMessage());
