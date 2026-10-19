@@ -16,6 +16,7 @@ Route::get('/user', function (Request $request) {
 Route::post('/login', function (Request $request) {
     // 1. Validation de la requête
 	$request->validate([
+		 
 	    'email'    => 'required|email',
 	    'password' => 'required',
 	    'device'   => 'required', // Le numéro de série du boîtier IoT

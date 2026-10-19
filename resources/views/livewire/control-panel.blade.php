@@ -65,7 +65,34 @@
 							<label class="form-check-label" for="cashSwitch">Cash</label>
 						</div>
 
-						
+						<hr>
+			
+						<form wire:submit="saveSlider">
+						<div class="row align-items-center">
+							<div class="col-md-6 d-flex flex-wrap gap-3">
+							@forelse($sliders as $index => $slider)
+								<div class="position-relative" style="width:50px; height:50px;">
+								<img src="{{ $slider }}" class="img-thumbnail w-100 h-100 object-fit-cover" alt="slider {{ $index+1 }}">
+								<button type="button" 
+										class="btn-close position-absolute top-0 end-0 bg-white rounded-circle p-1" 
+										style="transform: translate(30%,-30%);" 
+										wire:click="deleteSlider('{{ $slider }}')">
+								</button>
+								</div>
+							@empty
+								<p>Aucune image trouvée</p>
+							@endforelse
+							</div>
+
+							<div class="col-md-6">
+							<input class="form-control mb-2" type="file" wire:model="slider">
+							@error('slider') 
+								<span class="text-danger">{{ $message }}</span> 
+							@enderror
+							<button class="btn btn-primary" type="submit">Save photo</button>
+							</div>
+						</div>
+						</form>
 						
 						
 						<hr>
