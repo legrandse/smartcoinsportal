@@ -271,12 +271,26 @@ class ControlPanel extends Component
 	
 	public function deleteSlider($path)
 	{
-	    // $path sera une URL publique → il faut récupérer le chemin relatif
-	    $relativePath = str_replace('/storage/', 'public/', parse_url($path, PHP_URL_PATH));
+	    // 1. Extraire uniquement le nom du fichier (ex: "slider_1711234567.jpg")
+		$fileName = basename(parse_url($path, PHP_URL_PATH));
 
-	    if (Storage::exists($relativePath)) {
-	        Storage::delete($relativePath);
-	    }
+		// 2. Extraire le chemin relatif pour la suppression locale sur le disque public
+		$relativePath = 'slider/' . $fileName;
+
+		// 3. Supprimer en local si le fichier existe
+		if (Storage::disk('public')->exists($relativePath)) {
+			Storage::disk('public')->delete($relativePath);
+
+			// 4. Envoyer le nom du fichier dans le payload
+			$response = Http::withToken($this->device->serial)->post($this->ngrok . '/api/slider/delete', [
+				'filename' => $fileName,
+				// ou 'path' => $relativePath (selon ce que votre API attend)
+			]);
+
+			if ($response->failed()) {
+				\Log::error('Échec de la suppression distante du slider : ' . $response->body());
+			}
+		}
 
 	   
 	}
@@ -518,7 +532,16 @@ class ControlPanel extends Component
 	            //return view('livewire.device-offline');
 	            abort(404);
 	        }*/
+			$files = Storage::disk('public')->files('slider');
+    
+    		// On génère l'URL publique correcte
+    		$this->sliders = collect($files)->map(fn($file) => Storage::disk('public')->url($file))->toArray();
+
 			
+
+
+
+
 	        return view('livewire.control-panel');
     }
 }

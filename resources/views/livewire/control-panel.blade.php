@@ -15,21 +15,33 @@
 							<input class="form-control" type="texte" value="{{ $device->serial }}" disabled>
 						</div>
 					
+						<hr>
 					
-						<div class="mb-3">
-							<label for="formFile" class="form-label">Logo </label>
-							<form wire:submit="save">
-							@if ($photo) 
-								<img src="{{ $photo->temporaryUrl() }}" class="img-thumbnail">
-							@endif
-								<input class="form-control" type="file" wire:model="photo">
-							
-								@error('photo') <span class="error">{{ $message }}</span> @enderror
-							
-								<button class="btn btn-primary" type="submit">Save photo</button>
-							</form>
-						</div>
+						<form wire:submit="save">
+							<div class="row align-items-center">
+								<div class="col-md-2">
+								<img src="{{ asset('/storage/logo/logo.jpg') }}" height="50" alt="Logo" />
+								</div>
 
+								<div class="col-md-6">
+								@if ($photo) 
+									<img src="{{ $photo->temporaryUrl() }}"  class="d-block mb-2 img-thumbnail" style="height:150px">
+								@endif
+
+								<input class="form-control" type="file" wire:model="photo">
+
+								@error('photo') 
+									<span class="text-danger">{{ $message }}</span> 
+								@enderror
+								</div>
+
+								<div class="col-md-4 text-end">
+								<button class="btn btn-primary" type="submit">Save photo</button>
+								</div>
+							</div>
+						</form>
+
+						<hr>
 						
 						
 
@@ -182,6 +194,8 @@
 								</div>
 							</div>
 						</div>
+
+						<hr>
 
 						<div class="mb-3" >
 							<button type="button" class="btn btn-primary float-start" wire:click="rebootRaspberry" wire:confirm="Are you sure you want to reboot?"><i class="fas fa-sync" style="color: #f9a907;"></i></button>
