@@ -42,16 +42,16 @@ class ControlPanel extends Component
 	public $paypalToggle;
 	public $cashToggle;
 	
-	#[Validate('required')]
+	#[Validate('required|integer')]
 	public $magasin;
 	
-	#[Validate('required')]
+	#[Validate('required|numeric|min:1')]
 	public $parity;
 	
-	#[Validate('required')]
+	#[Validate(['required', 'string', 'regex:/^\d+(,\d+)*$/'])]
 	public $tokenArray;
 	
-	#[Validate('required')]
+	#[Validate('required|url')]
 	public $ngrok;
 	
 	//public $deviceUrl = 'https://smartcoinspython.ngrok.app';
@@ -515,7 +515,7 @@ class ControlPanel extends Component
 	
     public function render()
     {
-	 /*   try {
+	   try {
 	            // On tente d'appeler l'URL avec un timeout court (ex: 2 secondes)
 	            // pour ne pas bloquer le chargement de la page inutilement
 	            $response = Http::timeout(10)->get($this->ngrok);
@@ -531,7 +531,7 @@ class ControlPanel extends Component
 	            // En cas de timeout ou de problème DNS, on bascule sur la vue d'erreur
 	            //return view('livewire.device-offline');
 	            abort(404);
-	        }*/
+	        }
 			$files = Storage::disk('public')->files($this->linkedDevice->device_id.'/slider');
     
     		// On génère l'URL publique correcte
