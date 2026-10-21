@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\LinkedDevices;
 use App\Models\Devices;
 use App\Models\Settings;
@@ -55,6 +57,12 @@ class LinkedDevicesController extends Controller
 	    // Mettre à jour l'état du device (facultatif mais logique)
 	    $device->linked = true;
 	    $device->save();
+
+		// -----------------------------------------------------------------
+		// Création des dossiers : storage/app/public/{device->id}/logo & slider
+		// -----------------------------------------------------------------
+		Storage::disk('public')->makeDirectory($device->id . '/logo');
+		Storage::disk('public')->makeDirectory($device->id . '/slider');
 	    
 	    // Préparer les paramètres par défaut
 	    $settings = [

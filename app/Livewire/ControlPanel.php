@@ -203,11 +203,11 @@ class ControlPanel extends Component
 	public function save()
     {
         // 1. Sauvegarder l'image sur le disque local du portail
-		// (Dans storage/app/public/logo/logo.jpg)
-		$this->photo->storeAs('logo', 'logo.jpg', 'public');
+		// (Dans storage/app/public/1/logo/logo.jpg)
+		$this->photo->storeAs($this->linkedDevice->device_id .'/logo', 'logo.jpg', 'public');
 
 		// 2. Récupérer le contenu binaire du fichier via la façade Storage
-		$fileContent = Storage::disk('public')->get('logo/logo.jpg');
+		$fileContent = Storage::disk('public')->get($this->linkedDevice->device_id .'/logo/logo.jpg');
 
 		// 3. Envoyer le contenu directement à l'application
 		$response = Http::withToken($this->device->serial)
@@ -235,10 +235,10 @@ class ControlPanel extends Component
 		// 2. Sauvegarder l'image sur le disque local du portail
 		// (Dans storage/app/public/slider/nom_du_fichier.jpg)
 		// Note : avec le disque 'public', storeAs prend ('dossier', 'nom', 'disque')
-		$this->slider->storeAs('slider', $fileName, 'public');
+		$this->slider->storeAs($this->linkedDevice->device_id .'/slider', $fileName, 'public');
 
 		// 3. Récupérer le contenu binaire du fichier via la façade Storage
-		$fileContent = Storage::disk('public')->get('slider/' . $fileName);
+		$fileContent = Storage::disk('public')->get($this->linkedDevice->device_id .'/slider/' . $fileName);
 
 		// 4. Envoyer le contenu directement à l'application distante via l'API
 		$response = Http::withToken($this->device->serial)
@@ -275,7 +275,7 @@ class ControlPanel extends Component
 		$fileName = basename(parse_url($path, PHP_URL_PATH));
 
 		// 2. Extraire le chemin relatif pour la suppression locale sur le disque public
-		$relativePath = 'slider/' . $fileName;
+		$relativePath = $this->linkedDevice->device_id. '/slider/' . $fileName;
 
 		// 3. Supprimer en local si le fichier existe
 		if (Storage::disk('public')->exists($relativePath)) {
@@ -532,7 +532,7 @@ class ControlPanel extends Component
 	            //return view('livewire.device-offline');
 	            abort(404);
 	        }*/
-			$files = Storage::disk('public')->files('slider');
+			$files = Storage::disk('public')->files($this->linkedDevice->device_id.'/slider');
     
     		// On génère l'URL publique correcte
     		$this->sliders = collect($files)->map(fn($file) => Storage::disk('public')->url($file))->toArray();

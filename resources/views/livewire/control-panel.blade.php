@@ -19,8 +19,9 @@
 					
 						<form wire:submit="save">
 							<div class="row align-items-center">
+								<label class="form-check-label" for="photo">Logo</label>
 								<div class="col-md-2">
-								<img src="{{ asset('/storage/logo/logo.jpg') }}" height="50" alt="Logo" />
+								<img src="{{ asset('/storage/'.$linkedDevice->device_id.'/logo/logo.jpg') }}" height="50" alt="Logo" />
 								</div>
 
 								<div class="col-md-6">
@@ -81,6 +82,7 @@
 			
 						<form wire:submit="saveSlider">
 						<div class="row align-items-center">
+							<label class="form-check-label" for="slider">Slider</label>
 							<div class="col-md-6 d-flex flex-wrap gap-3">
 							@forelse($sliders as $index => $slider)
 								<div class="position-relative" style="width:50px; height:50px;">
@@ -212,4 +214,5 @@
 			</div>
 		</div>
 	</div>
+	
 </div>
