@@ -370,11 +370,11 @@ class ControlPanel extends Component
 			try {
 	            
 				$response = Http::withToken($this->device->serial)->post($baseUrl);
-				session()->flash('success', 'successfully updated.');
+				//session()->flash('success', 'successfully updated.');
 				
 			} catch (\Exception $e) {
 				\Log::error("Erreur lors de la commande collecte du lecteur de billets : " . $e->getMessage());
-				$this->collectHopperToggle = false;
+				//$this->collectHopperToggle = false;
 				return redirect()->back()->with('error', 'Lecteur de billets - Une erreur est survenue : ' . $e->getMessage());
 		    	}
 		}
