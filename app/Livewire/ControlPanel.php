@@ -66,6 +66,7 @@ class ControlPanel extends Component
 	public $denomination; // ex: 0.50
     public $quantity = 1; // ex: 3
     
+	public $isDeviceOnline = true;
 
     public $hopperLevels = [];
 
@@ -100,7 +101,29 @@ class ControlPanel extends Component
         
         $this->ngrok = Settings::where('device',$this->device->serial)
         						->where('name', 'ngrok')->value('value');
-		
+
+		try {
+				// 1. Vérification rapide avec un timeout réduit (ex: 2 ou 3 secondes)
+				$response = Http::timeout(3)->get($this->ngrok);
+				
+				if ($response->failed()) {
+					$this->isDeviceOnline = false;
+				}
+			} catch (\Exception $e) {
+				// En cas de timeout ou d'erreur réseau
+				$this->isDeviceOnline = false;
+			}
+
+			// Si le périphérique est hors ligne, on peut bloquer ou afficher un état spécifique
+			if (!$this->isDeviceOnline) {
+				abort(404, "Le périphérique ne répond pas.");
+			}
+
+			// 2. Chargement des fichiers (exécuté une seule fois à l'arrivée sur la page)
+			$files = Storage::disk('public')->files($this->linkedDevice->device_id . '/slider');
+			
+			$this->sliders = collect($files)->map(fn($file) => Storage::disk('public')->url($file))->toArray();
+				
 	}
 	
 	
@@ -153,7 +176,7 @@ class ControlPanel extends Component
 	public function updated($name, $value) 
 	{
 	    // 1. Liste des propriétés locales qu'on ne veut PAS envoyer à l'API de configuration
-	    $localToggles = ['collectHopperToggle', 'collectToggle', 'stackToggle', 'photo', 'slider', 'sliders'];
+	    $localToggles = ['collectHopperToggle', 'collectToggle', 'stackToggle', 'photo', 'slider', 'sliders', 'denomination','quantity'];
 
 	    if (in_array($name, $localToggles)) {
 	        // On arrête la fonction ici pour ces propriétés, Livewire aura quand même
@@ -369,31 +392,34 @@ class ControlPanel extends Component
 			'denomination' => 'required|numeric|min:0.1',
 		]);
 
-		try {
-			$response = Http::withToken($this->device->serial)->post(
-				$this->ngrok . '/api/stack-hopper',
-				[
-					'quantity' => $this->quantity,
-					'denomination' => $this->denomination,
-				]
-			);
+		if($this->stackToggle){
+			$this->collectToggle = false;
+			try {
+				$response = Http::withToken($this->device->serial)->post(
+					$this->ngrok . '/api/stack-hopper',
+					[
+						'quantity' => $this->quantity,
+						'denomination' => $this->denomination,
+					]
+				);
 
-			if ($response->failed()) {
-				throw new \Exception(
-					"Erreur API : " . $response->body()
+				if ($response->failed()) {
+					throw new \Exception(
+						"Erreur API : " . $response->body()
+					);
+				}
+
+				session()->flash('success', 'Requête envoyée avec succès !');
+
+			} catch (\Exception $e) {
+
+				Log::error("Erreur lors de l'appel stack-hopper : " . $e->getMessage());
+
+				session()->flash(
+					'error',
+					'Une erreur est survenue : ' . $e->getMessage()
 				);
 			}
-
-			session()->flash('success', 'Requête envoyée avec succès !');
-
-		} catch (\Exception $e) {
-
-			Log::error("Erreur lors de l'appel stack-hopper : " . $e->getMessage());
-
-			session()->flash(
-				'error',
-				'Une erreur est survenue : ' . $e->getMessage()
-			);
 		}
 	}
 	
@@ -515,28 +541,7 @@ class ControlPanel extends Component
 	
     public function render()
     {
-	   try {
-	            // On tente d'appeler l'URL avec un timeout court (ex: 2 secondes)
-	            // pour ne pas bloquer le chargement de la page inutilement
-	            $response = Http::timeout(10)->get($this->ngrok);
-				//dd($response);
-	            if ($response->failed()) {
-	                //return view('livewire.device-offline');
-	                abort(404, "Le périphérique ne répond pas.");
-	            }
-
-	            return view('livewire.control-panel');
-
-	        } catch (\Exception $e) {
-	            // En cas de timeout ou de problème DNS, on bascule sur la vue d'erreur
-	            //return view('livewire.device-offline');
-	            abort(404);
-	        }
-			$files = Storage::disk('public')->files($this->linkedDevice->device_id.'/slider');
-    
-    		// On génère l'URL publique correcte
-    		$this->sliders = collect($files)->map(fn($file) => Storage::disk('public')->url($file))->toArray();
-
+	   
 			
 
 
