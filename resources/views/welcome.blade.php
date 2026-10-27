@@ -98,7 +98,7 @@
             <h2> au service </h2>
             <h2><span>de vos transactions</span></h2>
             <p>Smartcoins, la solution intelligente <br>
-              pour distribuer, gérer et sécuriser <br>
+              pour distribuer <br>
               vos jetons en tout simplicité.
 
             </p>
