@@ -853,6 +853,7 @@ section,
 .hero .icon-box {
   padding: 30px 20px;
   transition: ease-in-out 0.3s;
+  background-color: #151515;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
   height: 100%;
   text-align: center;
@@ -897,6 +898,29 @@ section,
 
   .hero p {
     font-size: 18px;
+  }
+}
+
+#hero {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background: url('../img/background.png') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 140px 0 60px 0;
+}
+
+/* Ajustement pour que l'image de fond s'adapte bien sur mobiles */
+@media (max-width: 991.98px) {
+  #hero {
+    /* On remplace l'image par la version optimisée pour mobile */
+    background-image: url('../img/background-small.png');
+    background-size: cover;       /* Ou 'contain' selon la façon dont est cadrée votre nouvelle image */
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 120px 20px 40px 20px;
   }
 }
 

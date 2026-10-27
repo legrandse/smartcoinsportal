@@ -88,9 +88,9 @@
     <!--<section id="hero" class="hero section dark-background">-->
     <section id="hero" class="hero section dark-background">  
 
-      <img src="assets/img/background.png" alt="" data-aos="fade-in">
+     
 
-      <div class="container">
+      <div class="container mt-5">
 
         <div class="row " data-aos="fade-up" data-aos-delay="100">
           <div class="col-xl-6 col-lg-8">
@@ -107,29 +107,34 @@
 
         <div class="row gy-4 mt-5 " data-aos="fade-up" data-aos-delay="200">
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon-box">
-              <i class="bi bi-binoculars"></i>
-              <h3 class="text-uppercase"><a href="">Sécurisé</a></h3>
-              
-            </div>
+            <div>
+              <div class="icon-box">
+                <i class="bi bi-binoculars"></i>
+                <h3 class="text-uppercase"><a href="">Innovant</a></h3>
+              </div>
             <p class="fs-5">Transactions fiables <br>
                et sécurisées</p>
+            </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon-box">
-              <i class="bi bi-bullseye"></i>
-              <h3 class="text-uppercase"><a href="">Intelligent</a></h3>
-              
-            </div><p class="fs-5">Gestion à distance <br>
+            <div>
+              <div class="icon-box">
+                <i class="bi bi-bullseye"></i>
+                <h3 class="text-uppercase"><a href="">Intelligent</a></h3>
+              </div>
+              <p class="fs-5">Gestion à distance <br>
                et en temps réel</p>
+            </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon-box">
-              <i class="bi bi-fullscreen-exit"></i>
-              <h3 class="text-uppercase"><a href="">Performant</a></h3>
-              
-            </div><p class="fs-5">Conçu pour une <br>
-               utilisation intensive</p>
+            <div>
+              <div class="icon-box">
+                <i class="bi bi-fullscreen-exit"></i>
+                <h3 class="text-uppercase"><a href="">Performant</a></h3>
+              </div>
+              <p class="fs-5">Conçu pour une <br>
+               utilisation au quotidien</p>
+            </div>
           </div>
           
 
@@ -152,8 +157,8 @@
               Nous concevons et fabriquons des distributeurs de jetons, adaptés à vos besoins. Fiables, sécurisés et surtout faciles à utiliser !
             </p>
             <ul>
-              <li><i class="bi bi-check2-all"></i> <span>Que ce soit pour des cafétariats, clubs sportifs, parkings, bornes de jeux ou tout autre usage, nos distributeurs sont pensés pour offrir une expérience simple et efficace.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Evite la manipulation d'argent.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Que ce soit pour des cafétariats, clubs sportifs, nos distributeurs sont pensés pour offrir une expérience simple et efficace.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Rend la monnaie.</span></li>
               <li><i class="bi bi-check2-all"></i> <span>Utilise les dernières technologies de paiement électronique</span></li>
             </ul>
             <!--<p>
@@ -306,7 +311,7 @@
               <p>Afin de maintenir un fonctionnement de qualité, il est préconiser d'entretenir le matériel 1x par an.</p>
             </div>
           </div><!-- End Service Item -->
-
+{{--
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
               <div class="icon">
@@ -318,7 +323,7 @@
               <p>A votre demande, nous pouvons customiser l'apparence du distributeur.</p>
             </div>
           </div><!-- End Service Item -->
-{{--
+
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item position-relative">
               <div class="icon">
