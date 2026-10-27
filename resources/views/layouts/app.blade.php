@@ -311,6 +311,15 @@
         </div>
        
     </div>
+
+    <script>
+        const ptr = PullToRefresh.init({
+        mainElement: 'body',
+        onRefresh() {
+            window.location.reload();
+        }
+        });
+    </script>
     
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -326,6 +335,7 @@
 	
     <!-- Template Javascript -->
     <script src="{{asset('admin/js/main.js')}}"></script>
+
     
 </body>
 </html>
