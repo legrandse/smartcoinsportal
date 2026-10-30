@@ -312,14 +312,14 @@
        
     </div>
 
-    <script>
+   <!-- <script>
         const ptr = PullToRefresh.init({
         mainElement: 'body',
         onRefresh() {
             window.location.reload();
         }
         });
-    </script>
+    </script>-->
     
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
