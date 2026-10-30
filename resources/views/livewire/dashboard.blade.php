@@ -59,10 +59,10 @@
                 </div>
             </div>
     
-            <div class="col-sm-12 col-xl-4">
+            <div class="col-sm-12 col-xl-4 mb-3">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">{{ __('Token sales')  }} {{ $tokenSales }}</h6>
+                        <h6 class="mb-0">{{ __('Token sales')  }} : </h6><h6>{{ $tokenSales }}</h6>
                     </div>
                     <div wire:ignore>
                         <canvas id="bar-chart"></canvas>
@@ -88,46 +88,48 @@
                 </div>
             </div>
 
-            <div class="bg-secondary text-center rounded p-4 mt-3">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">{{ __('Recent Sales') }}</h6>
-                    <button class="btn btn-danger d-none" id="deleteBtn" wire:click="deleteSelected" wire:confirm="{{ __('Are you sure you want to delete this transaction?') }}" @disabled(empty($selected))>{{ __('Delete Selected') }}</button>
-                    <a href="#" wire:click.prevent="toggleShowAll">
-                        {{ $showAll ? __('Show Recent') : __('Show All') }}
-                    </a>
-                </div>
-                
-                <div class="table-responsive">
-                    <table class="table text-start align-middle table-bordered table-hover mb-0">
-                        <thead>
-                            <tr class="text-white">
-                                <th scope="col"><input class="form-check-input" type="checkbox" wire:model.live="selectAll"></th>
-                                <th scope="col">{{ __('Date') }}</th>
-                                <th scope="col">{{ __('Amount') }}</th>
-                                <th scope="col">{{ __('Credited') }}</th>
-                                <th scope="col">{{ __('Debited') }}</th>
-                                <th scope="col">{{ __('Status') }}</th>
-                                <th scope="col">{{ __('Tokens') }}</th>
-                                <th scope="col">{{ __('Type') }}</th>
-                                <th scope="col">{{ __('Debtor') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($transactions as $transaction)
-                            <tr>
-                                <td><input class="form-check-input" type="checkbox" value="{{ $transaction->id }}" wire:model.live="selected"></td>
-                                <td>{{ $transaction->updated_at }}</td>
-                                <td>{{ $transaction->amount }}€</td>
-                                <td>{{ $transaction->inserted_amount }}€</td>
-                                <td>{{ $transaction->debited_amount }}€</td>
-                                <td>{{ $transaction->status }}</td>
-                                <td>{{ $transaction->reference }}</td>
-                                <td>@if($transaction->debtor == '') {{ __('Cash') }} @else {{ __('Bancontact') }} @endif</td>
-                                <td>{{ $transaction->debtor }}</td>
-                            </tr>
-                        @endforeach 
-                        </tbody>
-                    </table>
+            <div class="col-xl-12 col-sm-4">
+                <div class="bg-secondary text-center rounded p-4 mt-2">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">{{ __('Recent Sales') }}</h6>
+                        <button class="btn btn-danger d-none" id="deleteBtn" wire:click="deleteSelected" wire:confirm="{{ __('Are you sure you want to delete this transaction?') }}" @disabled(empty($selected))>{{ __('Delete Selected') }}</button>
+                        <a href="#" wire:click.prevent="toggleShowAll">
+                            {{ $showAll ? __('Show Recent') : __('Show All') }}
+                        </a>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col"><input class="form-check-input" type="checkbox" wire:model.live="selectAll"></th>
+                                    <th scope="col">{{ __('Date') }}</th>
+                                    <th scope="col">{{ __('Amount') }}</th>
+                                    <th scope="col">{{ __('Credited') }}</th>
+                                    <th scope="col">{{ __('Debited') }}</th>
+                                    <th scope="col">{{ __('Status') }}</th>
+                                    <th scope="col">{{ __('Tokens') }}</th>
+                                    <th scope="col">{{ __('Type') }}</th>
+                                    <th scope="col">{{ __('Debtor') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($transactions as $transaction)
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox" value="{{ $transaction->id }}" wire:model.live="selected"></td>
+                                    <td>{{ $transaction->updated_at }}</td>
+                                    <td>{{ $transaction->amount }}€</td>
+                                    <td>{{ $transaction->inserted_amount }}€</td>
+                                    <td>{{ $transaction->debited_amount }}€</td>
+                                    <td>{{ $transaction->status }}</td>
+                                    <td>{{ $transaction->reference }}</td>
+                                    <td>@if($transaction->debtor == '') {{ __('Cash') }} @else {{ __('Bancontact') }} @endif</td>
+                                    <td>{{ $transaction->debtor }}</td>
+                                </tr>
+                            @endforeach 
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
     </div>
