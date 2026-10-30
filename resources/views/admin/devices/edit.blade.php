@@ -23,7 +23,7 @@
 	<div class="col-sm-12">		
 		<div class="card bg-secondary rounded p-4 mt-4">
 			<div class="card-header">
-				<h6 class="mb-4">Devices list</h6>
+				<h6 class="mb-4">{{__('Devices list')}}</h6>
 			</div>
 			
 			<div class="card-body bg-secondary rounded p-4">
@@ -32,7 +32,7 @@
 					@method('PATCH')
 					<div class="row mb-3 mt-3">
 						<div class="col-md-3">	
-							<label for="serial" class="form-label">Serial number :</label>
+							<label for="serial" class="form-label">{{ __('Serial number') }} :</label>
 						</div>
 						<div class="col-md-4">
 							<input class="form-control @error('serial') is-invalid @enderror" 
@@ -49,7 +49,7 @@
 
 					<div class="row mb-3 mt-3">
 						<div class="col-md-3">	
-							<label for="model" class="form-label">Model :</label>
+							<label for="model" class="form-label">{{__('Model')}} :</label>
 						</div>
 						<div class="col-md-4">
 							<input class="form-control @error('model') is-invalid @enderror" 
@@ -68,7 +68,7 @@
 					<div class="row">
 						<div class="col-md-3"></div>
 						<div class="col-md-4">
-							<button type="submit" class="btn btn-primary">Modifier</button>
+							<button type="submit" class="btn btn-primary">{{__('Change')}}</button>
 						</div>
 					</div>
 				</form>

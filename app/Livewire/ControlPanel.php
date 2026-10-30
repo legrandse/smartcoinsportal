@@ -119,10 +119,7 @@ class ControlPanel extends Component
 				abort(404, "Le périphérique ne répond pas.");
 			}
 
-			// 2. Chargement des fichiers (exécuté une seule fois à l'arrivée sur la page)
-			$files = Storage::disk('public')->files($this->linkedDevice->device_id . '/slider');
-			
-			$this->sliders = collect($files)->map(fn($file) => Storage::disk('public')->url($file))->toArray();
+			$this->loadSliders();
 				
 	}
 	
@@ -244,6 +241,15 @@ class ControlPanel extends Component
 		//$this->redirect('/linked-devices/1/edit');
     }
 
+	public function loadSliders()
+	{
+		if ($this->linkedDevice) {
+			$files = Storage::disk('public')->files($this->linkedDevice->device_id . '/slider');
+			$this->sliders = collect($files)->map(fn($file) => Storage::disk('public')->url($file))->toArray();
+		}
+	}
+
+
 	public function saveSlider()
 	{
 		// 1. Valider que le fichier est bien présent et est une image
@@ -259,7 +265,7 @@ class ControlPanel extends Component
 		// (Dans storage/app/public/slider/nom_du_fichier.jpg)
 		// Note : avec le disque 'public', storeAs prend ('dossier', 'nom', 'disque')
 		$this->slider->storeAs($this->linkedDevice->device_id .'/slider', $fileName, 'public');
-
+		
 		// 3. Récupérer le contenu binaire du fichier via la façade Storage
 		$fileContent = Storage::disk('public')->get($this->linkedDevice->device_id .'/slider/' . $fileName);
 
@@ -275,6 +281,9 @@ class ControlPanel extends Component
 		// 5. Nettoyage
 		$this->reset('slider');
 		
+		// 6. RÉACTIVITÉ : Recharger la liste pour Livewire
+    	$this->loadSliders();
+
 		// Optionnel : Gérer la réponse ou lever une erreur si l'API échoue
 		if ($response->failed()) {
 			// Gérer l'erreur d'envoi si nécessaire
@@ -284,13 +293,7 @@ class ControlPanel extends Component
 		// $this->dispatch('slider-updated'); // pour rafraîchir le carrousel
 	}
     
-    public function getSlidersProperty()
-	{
-	    $files = \Storage::files('public/slider');
-
-	    // Transformer en URL accessibles
-	    return collect($files)->map(fn($file) => \Storage::url($file));
-	}
+    
 	
 	public function deleteSlider($path)
 	{
@@ -309,6 +312,11 @@ class ControlPanel extends Component
 				'filename' => $fileName,
 				// ou 'path' => $relativePath (selon ce que votre API attend)
 			]);
+
+			//session()->flash('success', 'successfully updated.');
+
+			// 6. RÉACTIVITÉ : Recharger la liste pour Livewire
+    		$this->loadSliders();
 
 			if ($response->failed()) {
 				\Log::error('Échec de la suppression distante du slider : ' . $response->body());

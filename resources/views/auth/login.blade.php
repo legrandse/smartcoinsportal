@@ -21,7 +21,7 @@
                             <a href="index.html" class="">
                                 <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>{{ config('app.name', 'Laravel') }}</h3>
                             </a>
-                            <h3>Sign In</h3>
+                            <h3>{{ __('Sign In') }}</h3>
                         </div>
                         
                         <form method="POST" action="{{ route('login') }}">
@@ -33,7 +33,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                             	@enderror
-	                            <label for="floatingInput">Email address</label>
+	                            <label for="floatingInput">{{ __('Email address') }}</label>
 	                        </div>
 	                        
 	                        <div class="form-floating mb-4">
@@ -43,13 +43,13 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                             	@enderror
-	                            <label for="floatingPassword">Password</label>
+	                            <label for="floatingPassword">{{ __('Password') }}</label>
 	                        </div>
 	                        
 	                        <div class="d-flex align-items-center justify-content-between mb-4">
 	                            <div class="form-check">
 	                                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember" {{ old('remember') ? 'checked' : '' }}>
-	                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+	                                <label class="form-check-label" for="exampleCheck1">{{ __('Remember me') }}</label>
 	                            </div>
 	                            @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -57,8 +57,8 @@
                                     </a>
                                 @endif
 	                        </div>
-	                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-	                        <p class="text-center mb-0">Don't have an Account? <a href="/register">Sign Up</a></p>
+	                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">{{ __('Sign In') }}</button>
+	                        <p class="text-center mb-0">{{ __('Don\'t have an Account?') }} <a href="/register">{{ __('Sign Up') }}</a></p>
                         </form>
                     </div>
                 </div>

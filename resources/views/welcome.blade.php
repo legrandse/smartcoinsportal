@@ -827,35 +827,41 @@
           </div>--}}
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
+    
+              <!-- Affichage d'un message de succès si la requête a fonctionné -->
+              @if(session('success'))
+                  <div class="alert alert-success">
+                      {{ session('success') }}
+                  </div>
+              @endif
 
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
+              <form action="{{ route('contact.send') }}" method="post" data-aos="fade-up" data-aos-delay="200">
+                  @csrf <!-- Indispensable pour sécuriser le formulaire dans Laravel -->
+                  
+                  <div class="row gy-4">
 
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
+                      <div class="col-md-6">
+                          <input type="text" name="name" class="form-control" placeholder="Your Name" value="{{ old('name') }}" required>
+                      </div>
 
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
+                      <div class="col-md-6">
+                          <input type="email" class="form-control" name="email" placeholder="Your Email" value="{{ old('email') }}" required>
+                      </div>
 
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
+                      <div class="col-md-12">
+                          <input type="text" class="form-control" name="subject" placeholder="Subject" value="{{ old('subject') }}" required>
+                      </div>
 
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                      <div class="col-md-12">
+                          <textarea class="form-control" name="message" rows="6" placeholder="Message" required>{{ old('message') }}</textarea>
+                      </div>
 
-                  <button type="submit">Send Message</button>
-                </div>
+                      <div class="col-md-12 text-center">
+                          <button type="submit" class="btn btn-primary">Send Message</button>
+                      </div>
 
-              </div>
-            </form>
+                  </div>
+              </form>
           </div><!-- End Contact Form -->
 
         </div>

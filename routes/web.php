@@ -11,7 +11,7 @@ use App\Http\Controllers\DevicesController;
 use App\Http\Controllers\LinkedDevicesController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\ContactController;
 
 
 
@@ -77,6 +77,9 @@ Route::post('/confirm-password', function (Request $request) {
     return redirect()->intended();
 })->middleware(['auth', 'throttle:6,1']);
 */
+
+
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 Route::post('/api/get-levels', [App\Http\Controllers\HopperController::class, 'receiveLevels'])->name('get-levels');
 Route::post('/api/payments', [App\Http\Controllers\PaymentController::class, 'store'])->name('payments');
 Route::post('/api/settings/update', [App\Http\Controllers\SettingsController::class, 'update'])->name('settings');

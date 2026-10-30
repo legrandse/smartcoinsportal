@@ -12,7 +12,7 @@
     <div class="col-sm-12">        
         <div class="card bg-secondary rounded p-4 mt-4">
             <div class="card-header">
-                <h6 class="mb-4">Adding device</h6>
+                <h6 class="mb-4">{{__('Adding device')}}</h6>
             </div>
             
             <div class="card-body bg-secondary rounded p-4">
@@ -25,7 +25,7 @@
                     {{-- Champ Serial Number --}}
                     <div class="row mb-3 mt-3">
                         <div class="col-md-3">    
-                            <label for="serial" class="form-label text-white">Serial number :</label>
+                            <label for="serial" class="form-label text-white">{{__('Serial number')}} :</label>
                         </div>
                         <div class="col-md-4">
                             {{-- 3. Ajout de l'attribut 'name' et de 'value' pour garder la saisie en cas d'erreur --}}
@@ -43,7 +43,7 @@
                     {{-- Champ Name --}}
                     <div class="row mb-3 mt-3">
                         <div class="col-md-3">    
-                            <label for="model" class="form-label text-white">Model :</label>
+                            <label for="model" class="form-label text-white">{{__('Model')}} :</label>
                         </div>
                         <div class="col-md-4">
                             <input class="form-control @error('model') is-invalid @enderror" 
@@ -62,8 +62,8 @@
                     {{-- 4. Bouton de soumission --}}
                     <div class="row">
                         <div class="col-md-12 text-end">
-                            <a href="{{ route('devices.index') }}" class="btn btn-outline-light me-2">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Save Device</button>
+                            <a href="{{ route('devices.index') }}" class="btn btn-outline-light me-2">{{__('Cancel')}}</a>
+                            <button type="submit" class="btn btn-primary">{{__('Save Device')}}</button>
                         </div>
                     </div>
 

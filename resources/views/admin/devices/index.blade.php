@@ -23,7 +23,7 @@
 	<div class="col-sm-12">		
 		<div class="card bg-secondary rounded p-4 mt-4">
 			<div class="card-header d-flex justify-content-between align-items-center">
-			  <h6 class="mb-0">Devices list</h6>
+			  <h6 class="mb-0">{{__('Devices list')}}</h6>
 			  <a href="{{ route('devices.create') }}"><i class="fas fa-plus"></i></a>
 			</div>
 			
@@ -32,9 +32,9 @@
 				<thead>
 					<tr>
 						
-						<th scope="col">Name</th>	
-						<th scope="col">Serial</th>
-						<th scope="col">Edit</th>	
+						<th scope="col">{{__('Name')}}</th>	
+						<th scope="col">{{__('Serial')}}</th>
+						<th scope="col">{{__('Edit')}}</th>	
 					</tr>
 				</thead>
 				<tbody>

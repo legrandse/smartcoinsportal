@@ -143,7 +143,7 @@
                     </div>
                 </div>--}}
                 <div class="navbar-nav w-100">
-                    <a href="{{url('/home')}}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{url('/home')}}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>{{ __('Dashboard')}}</a>
                   {{-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Distributors</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -155,7 +155,7 @@
                     </div> --}}
                     
                     
-                    <a href="{{route('linked-devices.index')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Devices</a>
+                    <a href="{{route('linked-devices.index')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>{{ __('Devices') }}</a>
                     
                     
                     
@@ -261,7 +261,7 @@
                             <span class="d-none d-lg-inline-flex">{{auth()->user()->name}}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="{{ route('users.edit',['user'=> auth()->user()->id ]) }}" class="dropdown-item">My Profile</a>
+                            <a href="{{ route('users.edit',['user'=> auth()->user()->id ]) }}" class="dropdown-item">{{__('My Profile') }}</a>
                             <!--<a href="#" class="dropdown-item">Settings</a>-->
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

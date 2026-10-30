@@ -22,6 +22,7 @@ class Dashboard extends Component
     public $user;
     public $dailySales;
     public $yearlySales;
+    public $tokenSales;
 
     public $period = '1';
     public $startDate;
@@ -116,7 +117,10 @@ class Dashboard extends Component
     {
         $serials = $this->user->linkedDevices->pluck('device.serial')->toArray();
         if (!$this->user || empty($serials)) {
-            $this->dailySales = 0; $this->yearlySales = 0; return;
+            $this->dailySales = 0; 
+            $this->yearlySales = 0;
+            $this->tokenSales = 0; 
+            return;
         }
        
         $query = Transactions::where('status', 'SUCCEEDED')->whereIn('device', $serials);
@@ -151,6 +155,10 @@ class Dashboard extends Component
         $this->yearlySales = (clone $query)
             ->whereYear('created_at', Carbon::now()->year)
             ->sum('amount');
+        
+        $this->tokenSales = (clone $query)
+            ->whereBetween('created_at', [$start, $end])
+            ->sum('reference');
     }
 
 
@@ -286,6 +294,7 @@ class Dashboard extends Component
             'reference, COUNT(reference) as total'
         )
             ->whereBetween('created_at', [$start, $end])
+            //->whereBetween('created_at', ['2026-09-01', '2026-09-30'])
             ->whereIn('device', $serials)
             ->where('status', 'SUCCEEDED');
 
@@ -295,10 +304,14 @@ class Dashboard extends Component
             $query_bar->where('device', $device->serial); 
         }
 
+        
+
         $data_bar_chart = $query_bar
             ->groupBy('reference')
             ->orderBy('reference')
             ->get();
+
+       
 
         $this->bar_chart = [
             'labels' => $data_bar_chart->pluck('reference')->toArray(),
@@ -313,7 +326,7 @@ class Dashboard extends Component
                 ],
             ]],
         ];
-
+        
 
         // ---------------------------------------------------------
         // Chart 3 : donut Cash vs Bancontact
