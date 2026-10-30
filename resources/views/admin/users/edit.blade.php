@@ -89,7 +89,7 @@
 
                     <div class="mt-4">
                         <button type="submit" class="btn btn-primary">{{ __('Update User') }}</button>
-                        <a href="{{ route('users.index') }}" class="btn btn-outline-light">{{ __('Cancel') }}</a>
+                        <a href="{{ route('home') }}" class="btn btn-outline-light">{{ __('Cancel') }}</a>
                     </div>
                 </form>
             </div>
